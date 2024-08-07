@@ -1,5 +1,5 @@
 /*
- * utilities :)
+ * Utilities
 */
 
 #ifndef UTILITIES
@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <random>
 
-#define VERBOSE false
+#define VERBOSE true
 
 using namespace std;
 
