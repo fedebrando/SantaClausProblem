@@ -1,6 +1,6 @@
 #include "utilities.h"
 
-// returns one sampled value from the exponential distribution with avg as average
+// Returns one sampled value from the exponential distribution with avg as average
 double exp_dis(double avg)
 {
     static random_device rd;
@@ -10,8 +10,7 @@ double exp_dis(double avg)
     return ed(gen);
 }
 
-// prints the passed string 
-// and sleeps for a sampled millisecond value of time from the exponential distribution with avg_ms as average
+// Prints the passed string and sleeps for a sampled millisecond value of time from the exponential distribution with avg_ms as average
 void log(string s, unsigned int avg_ms)
 {
     ostringstream oss;

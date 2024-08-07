@@ -24,11 +24,13 @@ void cnt_condition_variable::notify_all()
     cv.notify_all();
 }
 
+// Returns the number of threads which are waiting on this condition variable
 unsigned int cnt_condition_variable::getCnt()
 {
     return cnt;
 }
 
+// Returns the truth value of the proposition "There is at least one thread which is waiting on this condition variable"
 bool cnt_condition_variable::any()
 {
     return cnt > 0;

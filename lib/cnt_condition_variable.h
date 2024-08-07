@@ -1,5 +1,5 @@
 /*
- * Class cnt_condition_variable
+ * Class cnt_condition_variable HAS-A condition_variable
  * A condition_variable with encapsulated counter
 */
 
