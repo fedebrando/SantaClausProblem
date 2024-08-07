@@ -1,0 +1,147 @@
+
+enum SERVICE
+{
+    DELIVERY,
+    CONSULT,
+    _TOT_SERVICES
+};
+
+class SantaClausV2 = Monitor
+{
+    int TOT[_TOT_SERVICES];
+    int MIN_ELVES;
+
+    condition_variable await_someone;
+    condition_variable wait_all_passed;
+    condition_variable wait_greetings;
+    condition_variable wait_reindeer_return;
+
+    condition_variable wait_service[_TOT_SERVICES];
+    int turnstile[_TOT_SERVICES];
+    condition_variable wait_end_of_service;
+    bool end_of_service;
+
+    SantaClausV2(int n_reindeer, int n_elves, int min_elves)
+    {
+        TOT[DELIVERY] = n_reindeer;
+        TOT[CONSULT] = n_elves;
+        MIN_ELVES = min_elves;
+        turnstile = {0};
+        end_of_service = false;
+    }
+
+    entry void new_consult()
+    {
+        if (await_someone.any()) // Santa is free
+            await_someone.notify_one();
+        while (turnstile[CONSULT] == 0)
+            wait_service[CONSULT].wait(lock);
+        
+        turnstile[CONSULT]--;
+        if (turnstile[CONSULT] > 0)
+            wait_service[CONSULT].notify_one();
+        else
+            wait_all_passed.notify_one();
+        while (!end_of_service)
+            wait_end_of_service.wait(lock);
+        
+        if (wait_end_of_service.any())
+            wait_end_of_service.notify_one();
+        else
+            wait_greetings.notify_one();
+    }
+
+    entry void new_delivery()
+    {
+        if (await_someone.any()) // Santa is free
+            await_someone.notify_one();
+        while (turnstile[DELIVERY] == 0)
+            wait_service[DELIVERY].wait(lock);
+        
+        turnstile[DELIVERY]--;
+        if (turnstile[DELIVERY] > 0)
+            wait_service[DELIVERY].notify_one();
+        else
+            wait_all_passed.notify_one();
+    }
+
+    entry void end_delivery()
+    {
+        if (wait_end_of_service.getCnt() == TOT[DELIVERY] - 1)
+            wait_reindeer_return.notify_one();
+        while (!end_of_service)
+            wait_end_of_service.wait(lock);
+        
+        if (wait_end_of_service.any())
+            wait_end_of_service.notify_one();
+        else
+            wait_greetings.notify_one();
+    }
+
+    entry void start_service(SERVICE& s)
+    {
+        while (!(wait_service[DELIVERY].getCnt() == TOT[DELIVERY] || wait_service[CONSULT].getCnt() >= MIN_ELVES))
+            await_someone.wait(lock);
+        
+        if (wait_service[DELIVERY].getCnt() == TOT[DELIVERY]) // serving the reindeer 
+            s = DELIVERY;
+        else // serving the elves
+            s = CONSULT;
+        turnstile[s] = (s == DELIVERY ? TOT[s] : MIN_ELVES);
+        end_of_service = false;
+        wait_service[s].notify_one(); // first reindeer/elf awakening
+        while (turnstile[s] > 0)
+            wait_all_passed.wait(lock);
+    }
+
+    entry void end_service(SERVICE s)
+    {
+        if (s == DELIVERY)
+            while (wait_end_of_service.getCnt() < TOT[s])
+                wait_reindeer_return.wait(lock);
+        
+        end_of_service = true;
+        wait_end_of_service.notify_one();
+        while (wait_end_of_service.any())
+            wait_greetings.wait(lock);
+    }
+};
+
+SantaClausV2 sc = SantaClausV2(9, 10, 3);
+
+void reindeer(SantaClausV2& sc)
+{
+    while (true)
+    {
+        <on vacation and wait Christmas>
+        <head back to the North Pole>
+        sc.new_delivery();
+        <delivering toys>
+        sc.end_delivery();
+        <head back to the Pacific Islands>
+    }
+}
+
+void elf(SantaClausV2& sc)
+{
+    while (true)
+    {
+        <make toys>
+        sc.new_consult();
+    }
+}
+
+void santa(SantaClausV2& sc)
+{
+    SERVICE s;
+
+    while (true)
+    {
+        sc.start_service(s);
+        if(s == DELIVERY)
+            <delivering toys>
+        else
+            <arguing with a bunch of stupid elves>
+        sc.end_service(s);
+    }
+}
