@@ -24,7 +24,7 @@ using namespace std;
 void read_output(list<double>& values, const char* outfile);
 void get_times(unsigned int n_reindeer, unsigned int n_elves, unsigned int n_santa, list<double>& values, const char* outfile);
 double avg(const list<double>& values);
-double std_dev(const list<double>& values, const double avg);
+double std_dev(const list<double>& values, double avg);
 
 int main() {
     list<double> values;
@@ -125,7 +125,7 @@ void get_times(unsigned int n_reindeer, unsigned int n_elves, unsigned int n_san
     {
         sleep(5);
         if (kill(pid, SIGTERM)) 
-            cerr << "Error in killing child process" << endl;
+            cerr << "Error in terminating child process" << endl;
         waitpid(pid, NULL, 0);
         read_output(values, outfile);
     }
@@ -141,7 +141,7 @@ double avg(const list<double>& values)
     return (sum/values.size());
 }
 
-double std_dev(const list<double>& values, const double avg)
+double std_dev(const list<double>& values, double avg)
 { 
     double sum_d = 0;
 
