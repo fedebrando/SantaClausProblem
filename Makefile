@@ -12,7 +12,7 @@ OUT = main1 main2 main3 main3multi
 all: $(OUT)
 
 main3multi: main3multi.o statistics.o
-	$(CC) -Istats -o $@ $^ $(LFLAGS)
+	$(CC) -I$(STATS) -o $@ $^ $(LFLAGS)
 
 main1: main1.o santa_v1.o cnt_condition_variable.o utilities.o statistics.o
 	$(CC) -o $@ $^ $(LFLAGS)
