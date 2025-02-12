@@ -9,7 +9,7 @@
 #include <mutex>
 #include <vector>
 
-//#define WAIT_VERBOSE
+#define WAIT_VERBOSE
 
 #ifdef WAIT_VERBOSE
 #include <iostream>

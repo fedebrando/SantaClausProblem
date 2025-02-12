@@ -26,21 +26,25 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
 #ifdef WAIT_VERBOSE
     chrono::_V2::system_clock::time_point start;
     chrono::_V2::system_clock::time_point stop;
-    chrono::duration<double, milli> elapsed; 
+    chrono::duration<double, milli> elapsed;
 #endif
 
     if (id_santa_selected != NONE)
         if (await_someone[id_santa_selected].any()) // selected Santa is free TODO (c'è bisogno di questo if? vedi 77-78)
             await_someone[id_santa_selected].notify_one();
 #ifdef WAIT_VERBOSE
-    start = chrono::high_resolution_clock::now();
+    if (s == CONSULT)
+        start = chrono::high_resolution_clock::now(); // TODO solo quando s == CONSULT?
 #endif
     while (turnstile[s] == 0)
         wait_service[s].wait(lock);
 #ifdef WAIT_VERBOSE
-    stop = chrono::high_resolution_clock::now();
-    elapsed = stop - start;
-    cout << to_string(elapsed.count()) << endl;
+    if (s == CONSULT)
+    {
+        stop = chrono::high_resolution_clock::now();
+        elapsed = stop - start;
+        cout << to_string(elapsed.count()) << endl;
+    }
 #endif
     
     id_santa = id_santa_selected;
@@ -82,6 +86,7 @@ void SantaClaus::start_service(SERVICE& s, unsigned int id)
         if (await_someone[i].any())
         {
             id_santa_selected = i; // TODO perché non c'è await_someone[i].notify_one()?
+            await_someone[i].notify_one();
             break;
         }
 }

@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <random>
 
-#define VERBOSE true
+#define VERBOSE false
 
 using namespace std;
 
