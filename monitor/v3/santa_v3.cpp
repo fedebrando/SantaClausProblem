@@ -30,7 +30,7 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
 #endif
 
     if (id_santa_selected != NONE)
-        if (await_someone[id_santa_selected].any()) // selected Santa is free
+        if (await_someone[id_santa_selected].any()) // selected Santa is free TODO (c'è bisogno di questo if? vedi 77-78)
             await_someone[id_santa_selected].notify_one();
 #ifdef WAIT_VERBOSE
     start = chrono::high_resolution_clock::now();
@@ -81,7 +81,7 @@ void SantaClaus::start_service(SERVICE& s, unsigned int id)
     for (unsigned int i = 0; i < n_santa; i++) // selecting new santa
         if (await_someone[i].any())
         {
-            id_santa_selected = i;
+            id_santa_selected = i; // TODO perché non c'è await_someone[i].notify_one()?
             break;
         }
 }
