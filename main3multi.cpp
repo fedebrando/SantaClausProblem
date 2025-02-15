@@ -13,7 +13,7 @@
 #define ELVES_MAX 15
 #define N_REINDEER 9
 #define MIN_ITERATIONS 5
-#define N_EQ_AVG 2
+#define N_EQ_AVG 5
 #define MAIN "main3"
 #define EXEC_MAIN "./main3"
 #define SPACE "\t"
