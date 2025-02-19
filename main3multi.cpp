@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
@@ -12,57 +13,152 @@
 #define ELVES_MIN 3
 #define ELVES_MAX 15
 #define N_REINDEER 9
-#define MIN_ITERATIONS 5
-#define N_EQ_AVG 5
-#define MAIN "main3"
-#define EXEC_MAIN "./main3"
+#define N_EQ_AVG 5          // minimum number of average not-significantly variation to compute results for a single (n_elves, n_santa) couple
+#define MAIN "main3"        // name of program to launch
+#define EXEC_MAIN "./main3" // command-line program
 #define SPACE "\t"
-#define PRECISION 0.01
+#define PRECISION 0.1       // not-significantly variation threshold
+#define BATCH_SIZE 30       // number of time values for each iteration
 
 using namespace std;
 
-void read_output(list<double>& values, const char* outfile);
-void get_times(unsigned int n_reindeer, unsigned int n_elves, unsigned int n_santa, list<double>& values, const char* outfile);
-double avg(const list<double>& values);
-double std_dev(const list<double>& values, double avg);
+// Updates received values with new BATCH_SIZE time values sampled from several execution of MAIN
+void update(double& sum, double& sum_of_squared, int& num_values, int n_elves, int n_santa);
 
-int main() {
-    list<double> values;
-    double average;
-    double dev_std;
-    double old_avg;
-    int iter = 0;
-    int cnt_n_cng = 0;
-    const char* outfile = "output.txt";
+// Inserts in a list new time values received from an execution of MAIN process
+void get_times(unsigned int n_elves, unsigned int n_santa, list<double>& values);
+
+// Reads MAIN process output file to get time values
+void read_output(list<double>& values, const char* outfile);
+
+int main(void)
+{
+    double sum, sum_of_squared, avg, std_dev, old_avg = 0;
+    int num_values;
+    int iter;
+    int cnt_n_cng; // number of average not-significantly variation
     
     cout << "N_REINDEER" << SPACE << "N_ELVES" << SPACE << "N_SANTA" << SPACE << "AVERAGE" << SPACE << "STANDARD_DEVIATION" << endl;
-    for (unsigned int n_elves = ELVES_MIN; n_elves <= ELVES_MAX; n_elves++)
+    for (unsigned int n_elves = ELVES_MIN; n_elves <= ELVES_MAX; n_elves++) // n_elves varying
     {
-        for (unsigned int n_santa = 1; n_santa <= (1 + n_elves/ELVES_MIN); n_santa++)
+        for (unsigned int n_santa = 1; n_santa <= (1 + n_elves/ELVES_MIN); n_santa++) // n_santa varying
         {
-            values.clear();
-            iter = 0;
+            sum = sum_of_squared = 0;
+            num_values = 0;
             cnt_n_cng = 0;
-            old_avg = 0;
+            iter = 0;
+
             cout << to_string(N_REINDEER) << SPACE << to_string(n_elves) << SPACE << to_string(n_santa);
-            while (iter < MIN_ITERATIONS || cnt_n_cng < N_EQ_AVG)
+
+            while (cnt_n_cng < N_EQ_AVG) // (n_elves, n_santa) couple iterations
             {
-                get_times(N_REINDEER, n_elves, n_santa, values, outfile);
-                average = avg(values);
-                dev_std = std_dev(values, average);        
+                // Get new BATCH_SIZE time values
+                update(sum, sum_of_squared, num_values, n_elves, n_santa);
+
+                // Compute average
+                avg = sum / num_values;
+
+                // Average not-significantly variantion checking
                 if (iter > 0)
                 {
-                    if (abs(old_avg - average) <= PRECISION)
+                    if (abs(old_avg - avg) <= PRECISION)
                         cnt_n_cng++;
                     else
                         cnt_n_cng = 0;
                 }
+                old_avg = avg; // update old average
+
+                cout << "Iter " << iter << ": agv=" << avg << ", cnt_all_values=" << num_values << ", cnt_n_cng=" << cnt_n_cng << endl;
+
                 iter++;
-                old_avg = average;
             }
-            cout << SPACE << dot2comma(to_string(average)) << SPACE << dot2comma(to_string(dev_std)) << endl;
+
+            // Compute standard deviation as a variance squared root
+            std_dev = sqrt(sum_of_squared / num_values - avg * avg); // variance is the the difference between the avg of squares and the square of avg
+
+            // Print results for this couple
+            cout << SPACE << dot2comma(to_string(avg)) << SPACE << dot2comma(to_string(std_dev)) << endl;
         }
     }    
+}
+
+void update(double& sum, double& sum_of_squared, int& num_values, int n_elves, int n_santa)
+{
+    static list<double> values;
+    double curr_val, curr_sum, curr_sum_of_squared;
+
+    // Read times until they are at least BATCH_SIZE
+    while (values.size() < BATCH_SIZE)
+    {
+        get_times(n_elves, n_santa, values);
+        cout << values.size() << endl;
+    }
+
+    // Compute sum and sum of squared of the BATCH_SIZE values
+    curr_sum = curr_sum_of_squared = 0;
+    for (int i = 0; i < BATCH_SIZE; i++)
+    {
+        curr_val = values.front();
+
+        curr_sum += curr_val;
+        curr_sum_of_squared += curr_val * curr_val;
+
+        values.pop_front();
+    }
+
+    // Update
+    sum += curr_sum;
+    sum_of_squared += curr_sum_of_squared;
+    num_values += BATCH_SIZE;
+}
+
+void get_times(unsigned int n_elves, unsigned int n_santa, list<double>& values)
+{
+    const char* outfile = "output.txt";
+    int fd;
+    pid_t pid = fork();
+
+    if (pid < 0) 
+    {
+        cerr << "Error during fork" << endl;
+        exit(1);
+    }
+
+    if (pid == 0) // child
+    {
+        // Open output file
+        fd = open(outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
+        if (fd < 0) 
+        {
+            cerr << "Error in opening file" << endl;
+            exit(1);
+        }
+        if (dup2(fd, STDOUT_FILENO) < 0) 
+        {
+            cerr << "Error in dup2" << endl;
+            close(fd);
+            exit(1);
+        }
+        close(fd);
+
+        // Change process execution to EXEC_MAIN
+        execlp(EXEC_MAIN, MAIN, to_string(N_REINDEER).c_str(), to_string(n_elves).c_str(), to_string(n_santa).c_str(), (char *)NULL);
+        cerr << "Error in executing execlp" << endl;
+        exit(1);
+    } 
+    else // parent
+    {
+        // Sleep during child execution for 10 seconds
+        sleep(10);
+
+        // Kill child process
+        if (kill(pid, SIGTERM)) 
+            cerr << "Error in terminating child process" << endl;
+        waitpid(pid, NULL, 0);
+
+        // Read child output
+        read_output(values, outfile);
+    }
 }
 
 void read_output(list<double>& values, const char* outfile)
@@ -89,64 +185,4 @@ void read_output(list<double>& values, const char* outfile)
         cerr << "Error in deleting file " << outfile << endl;
         exit(1);
     }
-}
-
-void get_times(unsigned int n_reindeer, unsigned int n_elves, unsigned int n_santa, list<double>& values, const char* outfile)
-{
-    int fd;
-    pid_t pid = fork();
-
-    if (pid < 0) 
-    {
-        cerr << "Error during fork" << endl;
-        exit(1);
-    }
-
-    if (pid == 0) // child
-    {
-        fd = open(outfile, O_WRONLY | O_CREAT | O_APPEND, 0644);
-        if (fd < 0) 
-        {
-            cerr << "Error in opening file" << endl;
-            exit(1);
-        }
-        if (dup2(fd, STDOUT_FILENO) < 0) 
-        {
-            cerr << "Error in dup2" << endl;
-            close(fd);
-            exit(1);
-        }
-        close(fd);
-        execlp(EXEC_MAIN, MAIN, to_string(n_reindeer).c_str(), to_string(n_elves).c_str(), to_string(n_santa).c_str(), (char *)NULL);
-        cerr << "Error in executing execlp" << endl;
-        exit(1);
-    } 
-    else // parent
-    {
-        sleep(5);
-        if (kill(pid, SIGTERM)) 
-            cerr << "Error in terminating child process" << endl;
-        waitpid(pid, NULL, 0);
-        read_output(values, outfile);
-    }
-}
-
-double avg(const list<double>& values)
-{
-    double sum = 0;
-
-    for (const double& v : values)
-        sum += v;
-    
-    return (sum/values.size());
-}
-
-double std_dev(const list<double>& values, double avg)
-{ 
-    double sum_d = 0;
-
-    for (const double& v : values)
-        sum_d += (v - avg) * (v - avg);
-    
-    return sqrt(sum_d/values.size());
 }
