@@ -1,3 +1,4 @@
+
 #include <thread>
 #include <chrono>
 #include "cnt_condition_variable.h"
@@ -7,10 +8,61 @@
 #define N_SANTA 5
 #define N_REINDEER 20
 #define N_ELVES 10
+
 #define MIN_REINDEER 9
 #define MIN_ELVES 3
 
 using namespace std;
+
+// Threads
+
+void reindeer(SantaClaus& sc, int id);
+void elf(SantaClaus& sc, int id);
+void santa(SantaClaus& sc, int id);
+
+// Reads line-command params
+void read_params(int argc, char** argv, int& n_reindeer, int& n_elves, int& n_santa);
+
+int main(int argc, char** argv)
+{
+    int n_reindeer, n_elves, n_santa;
+
+    read_params(argc, argv, n_reindeer, n_elves, n_santa);
+
+    // Create monitor
+    SantaClaus sc(n_reindeer, MIN_REINDEER, n_elves, MIN_ELVES, n_santa);
+
+    // Create threads
+    vector<thread> th_reindeer;
+    vector<thread> th_elves;
+    vector<thread> th_santa;
+    
+    for(int i = 0; i < n_elves; i++)
+    {
+        thread th(elf, ref(sc), i);
+        th_elves.push_back(move(th));
+    }
+    for(int i = 0; i < n_reindeer; i++)
+    {
+        thread th(reindeer, ref(sc), i);
+        th_reindeer.push_back(move(th));
+    }
+    for(int i = 0; i < n_santa; i++)
+    {
+        thread th(santa, ref(sc), i);
+        th_santa.push_back(move(th));
+    }
+
+    // Wait thread terminations
+    for(int i = 0; i < n_elves; i++)
+        th_elves[i].join();
+    for(int i = 0; i < n_reindeer; i++)
+        th_reindeer[i].join();
+    for(int i = 0; i < n_santa; i++)
+        th_santa[i].join();
+
+    return 0;
+}
 
 void reindeer(SantaClaus& sc, int id)
 {
@@ -70,41 +122,4 @@ void read_params(int argc, char** argv, int& n_reindeer, int& n_elves, int& n_sa
         cerr << "Error: params must be positive integer" << endl;;
         exit(2);
     }
-}
-
-int main(int argc, char** argv)
-{
-    int n_reindeer, n_elves, n_santa;
-
-    read_params(argc, argv, n_reindeer, n_elves, n_santa);
-
-    SantaClaus sc(n_reindeer, MIN_REINDEER, n_elves, MIN_ELVES, n_santa);
-    vector<thread> th_reindeer;
-    vector<thread> th_elves;
-    vector<thread> th_santa;
-    
-    for(int i = 0; i < n_elves; i++)
-    {
-        thread th(elf, ref(sc), i);
-        th_elves.push_back(move(th));
-    }
-    for(int i = 0; i < n_reindeer; i++)
-    {
-        thread th(reindeer, ref(sc), i);
-        th_reindeer.push_back(move(th));
-    }
-    for(int i = 0; i < n_santa; i++)
-    {
-        thread th(santa, ref(sc), i);
-        th_santa.push_back(move(th));
-    }
-
-    for(int i = 0; i < n_elves; i++)
-        th_elves[i].join();
-    for(int i = 0; i < n_reindeer; i++)
-        th_reindeer[i].join();
-    for(int i = 0; i < n_santa; i++)
-        th_santa[i].join();
-
-    return 0;
 }

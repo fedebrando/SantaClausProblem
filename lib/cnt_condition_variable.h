@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// A condition variable with encapsulated counter
 class cnt_condition_variable
 {
     private:
@@ -20,10 +21,15 @@ class cnt_condition_variable
     public:
         cnt_condition_variable();
         ~cnt_condition_variable();
+
         void wait(unique_lock<mutex>& lock);
         void notify_one();
         void notify_all();
+
+        // Returns the number of threads which are waiting on this condition variable
         unsigned int getCnt();
+
+        // Returns True if there's at least one thread which waits on this condition variable, False otherwise
         bool any();
 };
 

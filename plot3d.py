@@ -1,50 +1,53 @@
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import griddata
 
-# Leggi il file di testo
-file_path = 'data3d.txt'
+FILE_PATH = 'data3d.txt'
 
-# Specifica il delimitatore usato nel file di testo, ad esempio '\t' per tabulazione o ' ' per spazio
-data = pd.read_csv(file_path, delimiter='\t', dtype=str)
+def main():
+    data = pd.read_csv(FILE_PATH, delimiter='\t', dtype=str)
 
-# Sostituisci le virgole con i punti decimali
-data = data.apply(lambda x: x.str.replace(',', '.'))
+    # Replace commas with dots in decimal numbers
+    data = data.apply(lambda x : x.str.replace(',', '.'))
 
-# Converte i dati in formato numerico
-data = data.astype(float)
+    # Convert data
+    data = data.astype(float)
 
-# Controlla le prime righe del DataFrame per assicurarti che sia stato caricato correttamente
-print(data.head())
+    # Print first record for read checking
+    print(data.head())
 
-# Estrai le colonne
-x = data.iloc[:, 0].values
-y = data.iloc[:, 1].values
-z = data.iloc[:, 2].values
+    # Retrieve columns
+    x = data.iloc[:, 0].values
+    y = data.iloc[:, 1].values
+    z = data.iloc[:, 2].values
 
-# Crea una griglia per l'interpolazione
-grid_x, grid_y = np.meshgrid(np.linspace(x.min(), x.max(), 100), 
-                             np.linspace(y.min(), y.max(), 100))
+    # Create grid to interpolate data
+    grid_x, grid_y = np.meshgrid(np.linspace(x.min(), x.max(), 100), np.linspace(y.min(), y.max(), 100))
 
-# Interpola i dati sulla griglia
-grid_z = griddata((x, y), z, (grid_x, grid_y), method='cubic')
+    # Interpolate data on grid
+    grid_z = griddata((x, y), z, (grid_x, grid_y), method='cubic')
 
-# Crea la figura e l'asse 3D
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+    # Plot
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(grid_x, grid_y, grid_z, cmap='viridis', alpha=0.7) # surface
+    ax.scatter(x, y, z, color='r', marker='o') # original points
 
-# Plot della superficie interpolata
-ax.plot_surface(grid_x, grid_y, grid_z, cmap='viridis', alpha=0.7)
+    # Axe labels
+    ax.set_xlabel('#elves')
+    ax.set_ylabel('#santa')
+    ax.set_zlabel('time average')
 
-# Aggiungi i punti di dati originali
-ax.scatter(x, y, z, color='r', marker='o')
+    # LaTex style
+    #plt.rcParams['font.sans-serif'] = 'Latin Modern Math'
+    #plt.rcParams['font.family'] = 'sans-serif'
 
-# Imposta le etichette degli assi
-ax.set_xlabel('#elves')
-ax.set_ylabel('#santa')
-ax.set_zlabel('time average')
+    # Show graph
+    plt.show()
 
-# Mostra il grafico
-plt.show()
+
+if __name__ == '__main__':
+    main()
