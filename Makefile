@@ -35,22 +35,22 @@ main2.o: main2.cpp
 main3.o: main3.cpp
 	$(CC) -I$(STATS) -I$(LIB) -I$(V3) $(CFLAGS) -c -o $@ $<
 
-statistics.o: $(STATS)/statistics.cpp $(STATS)/statistics.h
+statistics.o: $(STATS)/statistics.cpp $(STATS)/statistics.hpp
 	$(CC) -I$(STATS) $(CFLAGS) -c -o $@ $<
 
-utilities.o: $(LIB)/utilities.cpp $(LIB)/utilities.h
+utilities.o: $(LIB)/utilities.cpp $(LIB)/utilities.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-cnt_condition_variable.o: $(LIB)/cnt_condition_variable.cpp $(LIB)/cnt_condition_variable.h
+cnt_condition_variable.o: $(LIB)/cnt_condition_variable.cpp $(LIB)/cnt_condition_variable.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-santa_v1.o: $(V1)/santa_v1.cpp $(V1)/santa_v1.h
+santa_v1.o: $(V1)/santa_v1.cpp $(V1)/santa_v1.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-santa_v2.o: $(V2)/santa_v2.cpp $(V2)/santa_v2.h
+santa_v2.o: $(V2)/santa_v2.cpp $(V2)/santa_v2.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-santa_v3.o: $(V3)/santa_v3.cpp $(V3)/santa_v3.h
+santa_v3.o: $(V3)/santa_v3.cpp $(V3)/santa_v3.hpp
 	$(CC) -I$(LIB) -I$(STATS) $(CFLAGS) -c -o $@ $<
 
 clean:

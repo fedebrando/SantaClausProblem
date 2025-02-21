@@ -1,4 +1,4 @@
-#include "santa_v3.h"
+#include "santa_v3.hpp"
 
 using namespace std;
 

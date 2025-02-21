@@ -1,19 +1,13 @@
 /*
- * Santa Claus Problem v1
+ * Santa Claus Problem v2
 */
 
-#ifndef SANTA_V1
-#define SANTA_V1
+#ifndef SANTA_V2
+#define SANTA_V2
 
-#include "cnt_condition_variable.h"
+#include "cnt_condition_variable.hpp"
 #include <mutex>
 #include <vector>
-
-#define PROB_VERBOSE
-
-#ifdef PROB_VERBOSE
-#include <iostream>
-#endif
 
 enum SERVICE
 {
@@ -33,6 +27,7 @@ class SantaClaus
         cnt_condition_variable await_someone;
         cnt_condition_variable wait_all_passed;
         cnt_condition_variable wait_greetings;
+        cnt_condition_variable wait_reindeer_return;
 
         vector<cnt_condition_variable> wait_service;
         vector<unsigned int> turnstile;
@@ -43,9 +38,11 @@ class SantaClaus
         SantaClaus();
         SantaClaus(unsigned int n_reindeer, unsigned int n_elves, unsigned int min_elves);
         ~SantaClaus();
-        void new_service(SERVICE s);
+        void new_consult();
+        void new_delivery();
+        void end_delivery();
         void start_service(SERVICE& s);
-        void end_service();
+        void end_service(SERVICE s);
 };
 
 #endif

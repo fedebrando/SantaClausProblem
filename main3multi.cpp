@@ -8,7 +8,7 @@
 #include <list>
 #include <cstdio>
 #include <cmath>
-#include "statistics.h"
+#include "statistics.hpp"
 
 #define ELVES_MIN 3
 #define ELVES_MAX 15

@@ -1,5 +1,5 @@
 
-#include "cnt_condition_variable.h"
+#include "cnt_condition_variable.hpp"
 
 cnt_condition_variable::cnt_condition_variable() : cv(), cnt(0)
 {}

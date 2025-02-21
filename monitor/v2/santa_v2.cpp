@@ -1,4 +1,4 @@
-#include "santa_v2.h"
+#include "santa_v2.hpp"
 
 using namespace std;
 

@@ -1,9 +1,9 @@
 
 #include <thread>
 #include <chrono>
-#include "cnt_condition_variable.h"
-#include "utilities.h"
-#include "santa_v3.h"
+#include "cnt_condition_variable.hpp"
+#include "utilities.hpp"
+#include "santa_v3.hpp"
 
 #define N_SANTA 5
 #define N_REINDEER 20

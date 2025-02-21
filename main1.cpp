@@ -1,10 +1,10 @@
 #include <thread>
 #include <chrono>
 #include <csignal>
-#include "cnt_condition_variable.h"
-#include "utilities.h"
-#include "statistics.h"
-#include "santa_v1.h"
+#include "cnt_condition_variable.hpp"
+#include "utilities.hpp"
+#include "statistics.hpp"
+#include "santa_v1.hpp"
 
 #define N_REINDEER 9
 #define N_ELVES 180

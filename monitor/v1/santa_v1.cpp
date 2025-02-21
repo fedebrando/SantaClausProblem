@@ -1,5 +1,5 @@
 
-#include "santa_v1.h"
+#include "santa_v1.hpp"
 
 using namespace std;
 

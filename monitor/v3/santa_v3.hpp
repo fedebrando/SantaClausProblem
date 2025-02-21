@@ -5,7 +5,7 @@
 #ifndef SANTA_V3
 #define SANTA_V3
 
-#include "cnt_condition_variable.h"
+#include "cnt_condition_variable.hpp"
 #include <mutex>
 #include <vector>
 
@@ -13,7 +13,7 @@
 
 #ifdef WAIT_VERBOSE
 #include <iostream>
-#include "statistics.h"
+#include "statistics.hpp"
 #endif
 
 #define NONE (-1)
