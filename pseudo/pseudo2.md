@@ -1,4 +1,4 @@
-
+```cpp
 enum SERVICE
 {
     DELIVERY,
@@ -138,10 +138,11 @@ void santa(SantaClausV2& sc)
     while (true)
     {
         sc.start_service(s);
-        if(s == DELIVERY)
+        if (s == DELIVERY)
             <delivering toys>
         else
             <answer all questions in session>
         sc.end_service(s);
     }
 }
+```
