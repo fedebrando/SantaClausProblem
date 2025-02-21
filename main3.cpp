@@ -99,7 +99,7 @@ void santa(SantaClaus& sc, int id)
         if(s == DELIVERY)
             log("Santa " + to_string(id) + ": delivering toys", 100);
         else
-            log("Santa " + to_string(id) + ": arguing with a bunch of stupid elves", 10);
+            log("Santa " + to_string(id) + ": answer all questions in session", 10);
         sc.end_service(id);
         log("Santa " + to_string(id) + ": end of service");
     }

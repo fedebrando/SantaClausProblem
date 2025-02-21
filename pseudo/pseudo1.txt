@@ -107,7 +107,7 @@ void santa(SantaClausV1& sc)
         if(s == DELIVERY)
             <delivering toys>
         else
-            <arguing with a bunch of stupid elves>
+            <answer all questions in session>
         sc.end_service();
     }
 }

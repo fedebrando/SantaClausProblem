@@ -151,7 +151,7 @@ void santa(SantaClaus& sc)
 #endif
         }
         else
-            log("Santa: arguing with a bunch of stupid elves", 10);
+            log("Santa: answer all questions in session", 10);
         sc.end_service(s);
         log("Santa: end of service");
     }

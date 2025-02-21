@@ -16,9 +16,10 @@
 #define N_EQ_AVG 5          // minimum number of average not-significantly variation to compute results for a single (n_elves, n_santa) couple
 #define MAIN "main3"        // name of program to launch
 #define EXEC_MAIN "./main3" // command-line program
+#define EXEC_TIME 13        // MAIN program execution time (seconds)
 #define SPACE "\t"
 #define PRECISION 0.1       // not-significantly variation threshold
-#define BATCH_SIZE 30       // number of time values for each iteration
+#define BATCH_SIZE 1000     // number of time values for each iteration
 
 using namespace std;
 
@@ -35,20 +36,22 @@ int main(void)
 {
     double sum, sum_of_squared, avg, std_dev, old_avg = 0;
     int num_values;
-    int iter;
     int cnt_n_cng; // number of average not-significantly variation
     
-    cout << "N_REINDEER" << SPACE << "N_ELVES" << SPACE << "N_SANTA" << SPACE << "AVERAGE" << SPACE << "STANDARD_DEVIATION" << endl;
+    cout << "n_reind" << SPACE << "n_elves" << SPACE << "n_santa" << SPACE << "average" << SPACE << "std_dev" << endl;
     for (unsigned int n_elves = ELVES_MIN; n_elves <= ELVES_MAX; n_elves++) // n_elves varying
     {
         for (unsigned int n_santa = 1; n_santa <= (1 + n_elves/ELVES_MIN); n_santa++) // n_santa varying
         {
+            if (n_santa == 1 && n_elves == ELVES_MIN) // TODO DA TOGLIERE
+                continue;
+            
             sum = sum_of_squared = 0;
             num_values = 0;
             cnt_n_cng = 0;
-            iter = 0;
+            old_avg = 0;
 
-            cout << to_string(N_REINDEER) << SPACE << to_string(n_elves) << SPACE << to_string(n_santa);
+            cout << to_string(N_REINDEER) << SPACE << to_string(n_elves) << SPACE << to_string(n_santa) << endl;
 
             while (cnt_n_cng < N_EQ_AVG) // (n_elves, n_santa) couple iterations
             {
@@ -59,7 +62,7 @@ int main(void)
                 avg = sum / num_values;
 
                 // Average not-significantly variantion checking
-                if (iter > 0)
+                if (old_avg) // satisfied for all iterations but first one
                 {
                     if (abs(old_avg - avg) <= PRECISION)
                         cnt_n_cng++;
@@ -67,10 +70,6 @@ int main(void)
                         cnt_n_cng = 0;
                 }
                 old_avg = avg; // update old average
-
-                cout << "Iter " << iter << ": agv=" << avg << ", cnt_all_values=" << num_values << ", cnt_n_cng=" << cnt_n_cng << endl;
-
-                iter++;
             }
 
             // Compute standard deviation as a variance squared root
@@ -89,10 +88,7 @@ void update(double& sum, double& sum_of_squared, int& num_values, int n_elves, i
 
     // Read times until they are at least BATCH_SIZE
     while (values.size() < BATCH_SIZE)
-    {
         get_times(n_elves, n_santa, values);
-        cout << values.size() << endl;
-    }
 
     // Compute sum and sum of squared of the BATCH_SIZE values
     curr_sum = curr_sum_of_squared = 0;
@@ -149,7 +145,7 @@ void get_times(unsigned int n_elves, unsigned int n_santa, list<double>& values)
     else // parent
     {
         // Sleep during child execution for 10 seconds
-        sleep(10);
+        sleep(EXEC_TIME);
 
         // Kill child process
         if (kill(pid, SIGTERM)) 

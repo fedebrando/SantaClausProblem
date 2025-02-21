@@ -123,7 +123,7 @@ void santa(SantaClausV3& sc, int id)
         if(s == DELIVERY)
             <delivering toys>
         else
-            <arguing with a bunch of stupid elves>
+            <answer all questions in session>
         sc.end_service(id);
     }
 }
