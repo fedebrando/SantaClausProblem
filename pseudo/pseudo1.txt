@@ -25,7 +25,7 @@ class SantaClausV1 = Monitor
         TOT[DELIVERY] = n_reindeer;
         TOT[CONSULT] = n_elves;
         MIN_ELVES = min_elves;
-        turnstile = {0};
+        turnstile = {0}; // all zero
         end_of_service = false;
     }
 

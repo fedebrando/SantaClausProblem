@@ -37,9 +37,9 @@ class SantaClausV3 = Monitor
         await_someone = array(n_santa);
         wait_all_passed = array(n_santa);
         wait_greetings = array(n_santa);
-        turnstile = {0};
+        turnstile = {0}; // all zero
         wait_end_of_service = array(n_santa);
-        end_of_service = {false};
+        end_of_service = {false}; // all false
     }
 
     entry void new_service(SERVICE s)
@@ -86,6 +86,7 @@ class SantaClausV3 = Monitor
             if (await_someone[i].any())
             {
                 id_santa_selected = i;
+                await_someone[i].notify_one();
                 break;
             }
     }
