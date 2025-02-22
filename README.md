@@ -1,35 +1,54 @@
 # Santa Claus Problem
-First of all, go to project root directory and compile project launching this command.
+
+First, navigate to the project root directory and compile the project by running the following command:
 
 ```shell
 make
 ```
-Now, you can select which version to run in `build` directory.
+
+Once compiled, you can select which version to run from the `build` directory.
 
 ## v1
-In this version, Santa Claus and reindeer deliver toys together as a single entity in a Petri net view. For running you can launch program in this simple way from `build` directory.
+
+In this version, Santa Claus and the reindeer deliver toys together as a single entity, modeled using a Petri net. To run the program from the `build` directory, use the following command.
+
 ```shell
 ./main1
 ```
-Once launched, the program doesn't stop. However, you can stop it by `Ctrl+C` command. If you want, you can change number of elves and reindeer by setting the relative macroconstant in `src/main1.cpp` and compiling project again. Finally, if you want show delivery times, you must uncomment `#define STATS_VERBOSE_V1` in the same file.
+
+The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify the number of elves and reindeer by adjusting the corresponding macro constant in `src/main1.cpp` and recompiling the project. If you want to display delivery times, uncomment the `#define STATS_VERBOSE_V1` directive in the same file.
 
 ## v2
-In this version, Santa Claus and reindeer deliver toys independently with downstream synchronization. As you could see in the previous version, you can launch program in this way from `build` directory.
+
+In this version, Santa Claus and the reindeer deliver toys independently, with downstream synchronization. As with the previous version, you can run the program from the `build` directory using the following command.
+
 ```shell
 ./main2
 ```
-Once launched, the program doesn't stop. However, you can stop it by `Ctrl+C` command. As in the previous version, you can change number of elves and reindeer by setting the relative macroconstant in `src/main2.cpp` and compiling project again. Finally, if you want show delivery tims, you must uncomment `#define STATS_VERBOSE_V2` constant in the same file.
+
+The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify the number of elves and reindeer by adjusting the corresponding macro constant in `src/main2.cpp` and recompiling the project. If you want to display delivery times, uncomment the `#define STATS_VERBOSE_V2` directive in the same file.
 
 ## v3
-This is a generalization of version 1 with an arbitrary number of Santa Claus type entities. You can also set the number of elves and reindeer by command-line parameters. Again from `build` directory, lauch this command.
+
+This version generalizes version 1 by allowing an arbitrary number of Santa Claus entities. You can specify the number of elves, reindeer, and Santa Claus instances as command-line parameters. Run the following command from the `build` directory.
+
 ```shell
 ./main3 n_reindeer n_elves n_santa
 ```
-Once launched, the program doesn't stop. However, you can stop it by `Ctrl+C` command. If you want show elves wait times, you must uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`.
 
-### Several execution
-For computing average and standard deviation of elves waiting times for consulting with Santa for several couples <i>(n_elves, n_santa)</i>, you can launch this program. <b>For its correct execution, you must uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`, set to `false` the `VERBOSE` macroconstant in `lib/utilities.hpp` and compile project again to print only the time values during the `main3` iterative executions.</b>
+The program runs indefinitely, but you can stop it with `Ctrl+C`. If you want to display elves' waiting times, uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`.
+
+### Multiple Executions
+
+To compute the average and standard deviation of elves' waiting times when consulting with Santa for various `<n_elves, n_santa>` pairs, use the following command:
+
 ```shell
 ./main3multi
 ```
-If you want fix another value for reindeer number, you must set `N_REINDEER` macroconstant in `src/main3multi.cpp` source file. In the same file, you can also choose the minimum and the maximum values for n_elves variation.
+
+**Important:** Before running this program, you must:
+- uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`;
+- set the `VERBOSE` macro constant in `lib/utilities.hpp` to `false`;
+- recompile the project to ensure only time values are printed during `main3` iterative executions.
+
+If you want to set a different number of reindeer, modify the `N_REINDEER` macro constant in `src/main3multi.cpp`. In the same file, you can also define the minimum and maximum values for `n_elves`.
