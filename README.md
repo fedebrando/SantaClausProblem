@@ -28,8 +28,8 @@ This is a generalization of version 1 with an arbitrary number of Santa Claus. Y
 Once launched, the program doesn't stop. However, you can stop it by `Ctrl+C` command. If you want show elves wait timing values, you must uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`.
 
 ### Several execution
-For computing average and standard deviation of elves waiting times for consulting with Santa for several couples (n_elves, n_santa), you can launch this program.
+For computing average and standard deviation of elves waiting times for consulting with Santa for several couples (n_elves, n_santa), you can launch this program. Make sure that for the correct execution of it, you must uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`, set to `false` the `VERBOSE` macroconstant in `lib/utilities.hpp` and compile project again to print time values only during the `main3` iterative executions.
 ```shell
 ./main3multi
 ```
-If you want fix another value for reindeer number, you must set `N_REINDEER` macroconstant in `src/main3multi.cpp` source file.
+If you want fix another value for reindeer number, you must set `N_REINDEER` macroconstant in `src/main3multi.cpp` source file. In the same file, you can also choose the minimum and the maximum values for n_elves varying.
