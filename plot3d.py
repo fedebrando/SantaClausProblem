@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import griddata
+from matplotlib.colors import LinearSegmentedColormap
 
 FILE_PATH = 'data3d.txt'
 
@@ -33,13 +34,14 @@ def main():
     # Plot
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot_surface(grid_x, grid_y, grid_z, cmap='viridis', alpha=0.7) # surface
-    ax.scatter(x, y, z, color='r', marker='o') # original points
+    custom_cmap = LinearSegmentedColormap.from_list('blue_red', ['blue', 'orange', 'red']) # fuzzy surface
+    ax.plot_surface(grid_x, grid_y, grid_z, cmap=custom_cmap, alpha=0.7) # surface
+    ax.scatter(x, y, z, color='black', marker='o', s=2) # original points
 
     # Axe labels
     ax.set_xlabel('#elves')
     ax.set_ylabel('#santa')
-    ax.set_zlabel('time average')
+    ax.set_zlabel('elves wait time avg')
 
     # LaTex style
     #plt.rcParams['font.sans-serif'] = 'Latin Modern Math'
