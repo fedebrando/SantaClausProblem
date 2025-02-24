@@ -11,7 +11,7 @@ enum SERVICE
 class SantaClausV3 = Monitor
 {
     int TOT[_TOT_SERVICES];
-    int MIN[_TOT_SERVICES];
+    int MIN_ELVES;
 
     int id_santa_selected;
     int n_santa;
@@ -24,12 +24,11 @@ class SantaClausV3 = Monitor
     condition_variable wait_end_of_service[];
     bool end_of_service[];
 
-    SantaClausV3(int n_reindeer, int n_elves, int n_santa_, int min_reindeer, int min_elves)
+    SantaClausV3(int n_reindeer, int n_elves, int n_santa_, int min_elves)
     {
         TOT[DELIVERY] = n_reindeer;
         TOT[CONSULT] = n_elves;
-        MIN[DELIVERY] = min_reindeer;
-        MIN[CONSULT] = min_elves;
+        MIN_ELVES = min_elves;
 
         id_santa_selected = NONE;
         n_santa = n_santa_;
@@ -68,21 +67,21 @@ class SantaClausV3 = Monitor
     {
         if (id_santa_selected == NONE)
             id_santa_selected = id;
-        while (!((wait_service[DELIVERY].getCnt() >= MIN[DELIVERY] || wait_service[CONSULT].getCnt() >= MIN[CONSULT]) && id_santa_selected == id))
+        while (!((wait_service[DELIVERY].getCnt() == TOT[DELIVERY] || wait_service[CONSULT].getCnt() >= MIN_ELVES) && id_santa_selected == id))
             await_someone[id].wait(lock);
         
-        if (wait_service[DELIVERY].getCnt() >= MIN[DELIVERY]) // serving the reindeer 
+        if (wait_service[DELIVERY].getCnt() == TOT[DELIVERY]) // serving the reindeer 
             s = DELIVERY;
         else // serving the elves
             s = CONSULT;
-        turnstile[s] = MIN[s];
+        turnstile[s] = (s == DELIVERY ? TOT[s] : MIN_ELVES);
         end_of_service[id] = false;
         wait_service[s].notify_one(); // first reindeer/elf awakening
         while (turnstile[s] > 0)
             wait_all_passed[id].wait(lock);
 
         id_santa_selected = NONE;
-        for (int i = 0; i < n_santa; i++) // selecting new santa
+        for (int i = 0; i < n_santa; i++) // selecting new Santa
             if (await_someone[i].any())
             {
                 id_santa_selected = i;
@@ -100,18 +99,26 @@ class SantaClausV3 = Monitor
     }
 };
 
-SantaClausV3 sc = SantaClausV3(20, 10, 5, 9, 3);
+SantaClausV3 sc = SantaClausV3(9, 10, 4, 3);
 
 void reindeer(SantaClausV3& sc)
 {
     while (true)
+    {
+        <on vacation and wait Christmas>
+        <head back to the North Pole>
         sc.new_service(DELIVERY);
+        <head back to the Pacific Islands>
+    }
 }
 
 void elf(SantaClausV3& sc)
 {
     while (true)
+    {
+        <make toys>
         sc.new_service(CONSULT);
+    }
 }
 
 void santa(SantaClausV3& sc, int id)
