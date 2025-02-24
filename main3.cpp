@@ -40,24 +40,24 @@ int main(int argc, char** argv)
     read_params(argc, argv, n_reindeer, n_elves, n_santa);
 
     // Create monitor
-    SantaClaus sc(N_REINDEER, N_ELVES, MIN_ELVES, N_SANTA);
+    SantaClaus sc(n_reindeer, n_elves, MIN_ELVES, n_santa);
 
     // Create main threads
     vector<thread> th_reindeer;
     vector<thread> th_elves;
     vector<thread> th_santa;
     
-    for (int i = 0; i < N_SANTA; i++)
+    for (int i = 0; i < n_santa; i++)
     {
         thread th(santa, ref(sc), i);
         th_santa.push_back(move(th));
     }
-    for (int i = 0; i < N_ELVES; i++)
+    for (int i = 0; i < n_elves; i++)
     {
         thread th(elf, ref(sc), i);
         th_elves.push_back(move(th));
     }
-    for (int i = 0; i < N_REINDEER; i++)
+    for (int i = 0; i < n_reindeer; i++)
     {
         thread th(reindeer, ref(sc), i);
         th_reindeer.push_back(move(th));
@@ -71,11 +71,11 @@ int main(int argc, char** argv)
     
     // Wait for thread terminations
     th_signal.join();
-    for (int i = 0; i < N_ELVES; i++)
+    for (int i = 0; i < n_elves; i++)
         th_elves[i].join();
-    for (int i = 0; i < N_REINDEER; i++)
+    for (int i = 0; i < n_reindeer; i++)
         th_reindeer[i].join();
-    for (int i = 0; i < N_SANTA; i++)
+    for (int i = 0; i < n_santa; i++)
         th_santa[i].join();
 
     return 0;

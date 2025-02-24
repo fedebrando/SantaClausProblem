@@ -73,14 +73,14 @@ void SantaClaus::start_service(SERVICE& s, unsigned int id)
         s = DELIVERY; // serving the reindeer 
     else
         s = CONSULT; // serving the elves
-    turnstile[s] = MIN_ELVES;
+    turnstile[s] = (s == DELIVERY ? TOT[s] : MIN_ELVES);
     end_of_service[id] = false;
     wait_service[s].notify_one(); // first reindeer/elf awakening
     while (turnstile[s] > 0)
         wait_all_passed[id].wait(lock);
 
     id_santa_selected = NONE;
-    for (unsigned int i = 0; i < n_santa; i++) // selecting new santa
+    for (unsigned int i = 0; i < n_santa; i++) // selecting new Santa
         if (await_someone[i].any())
         {
             id_santa_selected = i;
