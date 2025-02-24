@@ -31,7 +31,7 @@ class SantaClaus
         mutex mtx;
 
         vector<unsigned int> TOT;
-        vector<unsigned int> MIN;
+        unsigned int MIN_ELVES;
 
         int id_santa_selected;
         unsigned int n_santa;
@@ -46,7 +46,7 @@ class SantaClaus
         
     public:
         SantaClaus();
-        SantaClaus(unsigned int n_reindeer, unsigned int min_reindeer, unsigned int n_elves, unsigned int min_elves, unsigned int n_santa);
+        SantaClaus(unsigned int n_reindeer, unsigned int n_elves, unsigned int min_elves, unsigned int n_santa);
         ~SantaClaus();
         void new_service(SERVICE s, unsigned int& id_santa);
         void start_service(SERVICE& s, unsigned int id);

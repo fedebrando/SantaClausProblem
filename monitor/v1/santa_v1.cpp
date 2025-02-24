@@ -59,10 +59,10 @@ void SantaClaus::start_service(SERVICE& s)
     while (!(wait_service[DELIVERY].getCnt() == TOT[DELIVERY] || wait_service[CONSULT].getCnt() >= MIN_ELVES))
         await_someone.wait(lock);
     
-    if (wait_service[DELIVERY].getCnt() == TOT[DELIVERY]) // serving the reindeer 
-        s = DELIVERY;
-    else // serving the elves
-        s = CONSULT;
+    if (wait_service[DELIVERY].getCnt() == TOT[DELIVERY])
+        s = DELIVERY; // serving the reindeer 
+    else
+        s = CONSULT; // serving the elves
     turnstile[s] = (s == DELIVERY ? TOT[s] : MIN_ELVES);
     end_of_service = false;
     wait_service[s].notify_one(); // first reindeer/elf awakening

@@ -41,12 +41,12 @@ int main(void)
     vector<thread> th_elves;
     thread th_santa(santa, ref(sc));
     
-    for(int i = 0; i < N_ELVES; i++)
+    for (int i = 0; i < N_ELVES; i++)
     {
         thread th(elf, ref(sc), i);
         th_elves.push_back(move(th));
     }
-    for(int i = 0; i < N_REINDEER; i++)
+    for (int i = 0; i < N_REINDEER; i++)
     {
         thread th(reindeer, ref(sc), i);
         th_reindeer.push_back(move(th));
@@ -60,9 +60,9 @@ int main(void)
     
     // Wait for thread terminations
     th_signal.join();
-    for(int i = 0; i < N_ELVES; i++)
+    for (int i = 0; i < N_ELVES; i++)
         th_elves[i].join();
-    for(int i = 0; i < N_REINDEER; i++)
+    for (int i = 0; i < N_REINDEER; i++)
         th_reindeer[i].join();
     th_santa.join();
 
@@ -134,7 +134,7 @@ void santa(SantaClaus& sc)
     {
         log("Santa: waiting for reindeer/elves");
         sc.start_service(s);
-        if(s == DELIVERY)
+        if (s == DELIVERY)
         {
 #ifdef STATS_VERBOSE_V1
             _start_stop_v1();
