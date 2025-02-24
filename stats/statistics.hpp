@@ -9,19 +9,45 @@
 
 using namespace std;
 
+/**
+ * Represents modes for calling `_start_stop_v2` function
+ */
 enum ACTION
 {
+    /**
+     * Chronometer start mode
+     */
     START,
+
+    /**
+     * Chronometer stop mode
+     */
     STOP
 };
 
-// Measures and prints the time between two consecutive calls
+/**
+ * @brief Measures and prints the time between two consecutive calls
+ */
 void _start_stop_v1();
 
-// Measures and prints the time between the n_start_min-th time with act as START and the n_stop_min-th time with act as STOP
+/**
+ * @brief Measures and prints the time between two instants in a concurrent enviroment
+ * 
+ * This function measures time between two instants, starting from
+ * `n_start_min`-th call and stop at the `n_stop_min`-th call
+ * 
+ * @param act Call mode
+ * @param n_start_min Number of start calls to start chronometer
+ * @param n_stop_min Number of stop calls to stop chronometer
+ */
 void _start_stop_v2(ACTION act, unsigned int n_start_min, unsigned int n_stop_min);
 
-// Returns the string s with '.' substituted by ',' 
+/**
+ * @brief Replaces dots with commas
+ * 
+ * @param s The string to modify
+ * @return The string with dots replaced by commas
+ */
 string dot2comma(string s);
 
 #endif

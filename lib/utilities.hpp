@@ -11,11 +11,25 @@
 
 using namespace std;
 
-// Returns one sampled value from the exponential distribution with avg as average
+/**
+ * @brief Samples an exponential distribution with received average
+ * 
+ * @param avg The average of the exponential distribution
+ * @return A value sampled from the exponential distribution
+ */
 double exp_dis(double avg);
 
-// Prints the received string and sleeps for a sampled millisecond value of time from the exponential distribution with non-zero avg_ms as average
-// (If avg_ms is 0, there won't be sleep)
+/**
+ * @brief Prints a log and sleeps for some time
+ * 
+ * This function print the received log string and waits for a time sampled
+ * from an exponential distribution with received positive average (milliseconds)
+ * 
+ * @param s The log string to print
+ * @param avg_ms The positive average of the time exponential distribution (in milliseconds)
+ * 
+ * @warning If the received average is 0, this function prints a log but doesn't sleep
+ */
 void log(string s, unsigned int avg_ms = 0);
 
 #endif
