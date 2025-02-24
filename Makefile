@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -O3 -Wall -pthread -std=c++11
+CFLAGS = -O3 -Wall -pthread -std=c++17
 LFLAGS = -pthread 
 LIB = lib
 STATS = stats
