@@ -1,3 +1,4 @@
+
 #include <thread>
 #include <chrono>
 #include <csignal>
@@ -8,7 +9,7 @@
 
 #define N_REINDEER 9
 #define N_ELVES 180
-#define MIN_ELVES 3
+#define MIN_ELVES 3 // Number of elves in a consulting group
 
 //#define STATS_VERBOSE_V1
 

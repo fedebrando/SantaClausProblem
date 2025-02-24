@@ -1,6 +1,3 @@
-/*
- * statistics :)
-*/
 
 #ifndef STATISTICS
 #define STATISTICS
