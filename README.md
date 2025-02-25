@@ -36,7 +36,7 @@ This version generalizes version 1 by allowing an arbitrary number of Santa Clau
 ./main3 n_reindeer n_elves n_santa
 ```
 
-The program runs indefinitely, but you can stop it with `Ctrl+C`. If you want to display elves' waiting times, uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`.
+The program runs indefinitely, but you can stop it with `Ctrl+C`. If you want to display elves' waiting times, uncomment `#define ELVES_WAIT_TIME_VERBOSE` in `monitor/v3/santa_v3.hpp`. Finally, if you want to display last arrived reindeer's waiting time, uncomment `#define LAST_REINDEER_WAIT_TIME_VERBOSE` in the same file.
 
 ### Multiple Executions
 
@@ -47,7 +47,7 @@ To compute the average and standard deviation of elves' waiting times when consu
 ```
 
 **Important:** Before running this program, you must:
-- uncomment `#define WAIT_VERBOSE` in `monitor/v3/santa_v3.hpp`;
+- uncomment `#define ELVES_WAIT_TIME_VERBOSE` in `monitor/v3/santa_v3.hpp`;
 - set the `VERBOSE` macro constant in `lib/utilities.hpp` to `false`;
 - recompile the project to ensure only time values are printed during `main3` iterative executions.
 

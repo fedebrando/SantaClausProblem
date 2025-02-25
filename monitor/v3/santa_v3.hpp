@@ -1,6 +1,3 @@
-/*
- * Santa Claus Problem v3
-*/
 
 #ifndef SANTA_V3
 #define SANTA_V3
@@ -9,9 +6,10 @@
 #include <mutex>
 #include <vector>
 
-#define WAIT_VERBOSE
+//#define ELVES_WAIT_TIME_VERBOSE
+#define LAST_REINDEER_WAIT_TIME_VERBOSE
 
-#ifdef WAIT_VERBOSE
+#if defined(ELVES_WAIT_TIME_VERBOSE) || defined(LAST_REINDEER_WAIT_TIME_VERBOSE)
 #include <iostream>
 #include "statistics.hpp"
 #endif
