@@ -137,11 +137,11 @@ void santa(SantaClaus& sc)
         if (s == DELIVERY)
         {
 #ifdef STATS_VERBOSE_V1
-            _start_stop_v1();
+            _start_stop();
 #endif
             log("Santa: delivering toys", 100);
 #ifdef STATS_VERBOSE_V1
-            _start_stop_v1();
+            _start_stop();
 #endif
         }
         else

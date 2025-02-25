@@ -10,7 +10,7 @@
 using namespace std;
 
 /**
- * Represents modes for calling `_start_stop_v2` function
+ * Represents modes for calling `_start_stop_multi` function
  */
 enum ACTION
 {
@@ -28,7 +28,7 @@ enum ACTION
 /**
  * @brief Measures and prints the time between two consecutive calls
  */
-void _start_stop_v1();
+void _start_stop();
 
 /**
  * @brief Measures and prints the time between two instants in a concurrent enviroment
@@ -40,7 +40,7 @@ void _start_stop_v1();
  * @param n_start_min Number of start calls to start chronometer
  * @param n_stop_min Number of stop calls to stop chronometer
  */
-void _start_stop_v2(ACTION act, unsigned int n_start_min, unsigned int n_stop_min);
+void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min);
 
 /**
  * @brief Replaces dots with commas

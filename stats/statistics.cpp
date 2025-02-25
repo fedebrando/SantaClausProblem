@@ -1,7 +1,7 @@
 
 #include "statistics.hpp"
 
-void _start_stop_v1()
+void _start_stop()
 {
     static bool first_time = true;
     static chrono::_V2::system_clock::time_point start;
@@ -25,7 +25,7 @@ void _start_stop_v1()
     }
 }
 
-void _start_stop_v2(ACTION act, unsigned int n_start_min, unsigned int n_stop_min)
+void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min)
 {
     static mutex mtx;
     unique_lock<mutex> lock(mtx);
