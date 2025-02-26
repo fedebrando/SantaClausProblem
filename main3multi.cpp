@@ -19,9 +19,9 @@
 #define EXEC_MAIN "./main3" // command-line program
 #define SPACE "\t"
 #define POLLING_PERIOD 5  // time period (seconds) after which there is file is checked
-#define ROW_BYTES 10 // chars in a row (approximately)
+#define ROW_BYTES 9 // chars in a row (approximately)
 
-#define N 10000 // approximately number of data for each <n_elves, n_santa> pair
+#define N 10 // approximately number of data for each <n_elves, n_santa> pair
 
 using namespace std;
 
@@ -56,7 +56,7 @@ void read_output(list<double>& values, const char* outfile)
     double value;
     ifstream file(outfile);
 
-    if (!file) 
+    if (!file)
     {
         cerr << "Error in opening file " << outfile << endl;
         exit(1);

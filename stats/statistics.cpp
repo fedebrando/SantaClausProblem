@@ -25,7 +25,7 @@ void _start_stop()
     }
 }
 
-void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min)
+void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma)
 {
     static mutex mtx;
     unique_lock<mutex> lock(mtx);
@@ -50,7 +50,10 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
         {
             stop = chrono::high_resolution_clock::now();
             elapsed = stop - start;
-            cout << dot2comma(to_string(elapsed.count())) << endl;
+            if (comma)
+                cout << dot2comma(to_string(elapsed.count())) << endl;
+            else
+                cout << to_string(elapsed.count()) << endl;
 
             // reset values
             n_start = 0;
