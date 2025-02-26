@@ -58,7 +58,7 @@ class cnt_condition_variable
 
         /**
          * @brief Checks if there's a thread in waiting on this condition variable
-         * @return True if there's at least one thread which waits on this condition variable, False otherwise
+         * @return `true` if there's at least one thread which waits on this condition variable, `false` otherwise
          */
         bool any();
 };

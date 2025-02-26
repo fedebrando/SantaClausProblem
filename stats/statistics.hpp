@@ -39,6 +39,7 @@ void _start_stop();
  * @param act Call mode
  * @param n_start_min Number of start calls to start chronometer
  * @param n_stop_min Number of stop calls to stop chronometer
+ * @param comma `true` to print values with comma instead dot, `false` otherwise (default: `false`)
  */
 void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma = true);
 
