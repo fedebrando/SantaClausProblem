@@ -21,7 +21,7 @@
 #define POLLING_PERIOD 5  // time period (seconds) after which there is file is checked
 #define ROW_BYTES 9 // chars in a row (approximately)
 
-#define N 10 // approximately number of data for each <n_elves, n_santa> pair
+#define N 110 // approximately number of data for each <n_elves, n_santa> pair
 
 using namespace std;
 
