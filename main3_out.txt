@@ -1,560 +1,624 @@
 A Santa is free!
-3.766246
+8,962938
 A Santa is free!
-2.193002
+3,550249
+All Santas are busy!
+4,206387
+A Santa is free!
+1,946277
+All Santas are busy!
+5,413647
 A Santa is free!
-1.955296
+3,258291
 A Santa is free!
-5.788573
+3,295912
+A Santa is free!
+1,765426
 All Santas are busy!
-12.621008
+59,904992
+A Santa is free!
+4,726931
 All Santas are busy!
-14.095544
+2,460171
 A Santa is free!
-1.169836
+1,552868
+A Santa is free!
+8,002966
+A Santa is free!
+2,912443
 All Santas are busy!
-14.578329
+30,885474
 All Santas are busy!
-7.407253
+4,808346
+A Santa is free!
+1,481950
+A Santa is free!
+2,129340
 All Santas are busy!
-4.480006
+3,381196
 A Santa is free!
-7.958021
+2,292878
+All Santas are busy!
+19,735707
 A Santa is free!
-0.930238
+3,022738
 A Santa is free!
-1.935426
+3,767377
 A Santa is free!
-1.279394
-All Santas are busy!
-2.416363
-All Santas are busy!
-3.248148
+2,305277
+A Santa is free!
+5,814979
+A Santa is free!
+4,235450
+A Santa is free!
+1,390126
 All Santas are busy!
-4.467313
+18,039995
 A Santa is free!
-1.318463
+3,438331
+A Santa is free!
+1,457357
 All Santas are busy!
-1.026954
+5,639188
 A Santa is free!
-1.624868
+1,479329
 A Santa is free!
-5.326253
+1,264079
 A Santa is free!
-1.857127
-All Santas are busy!
-5.357892
+5,334845
+A Santa is free!
+2,870376
 All Santas are busy!
-30.668888
+48,969085
 A Santa is free!
-1.548576
+2,097822
+All Santas are busy!
+1,576824
 A Santa is free!
-2.339592
+1,283384
 A Santa is free!
-3.707045
+4,259838
 All Santas are busy!
-62.401508
+41,285387
 A Santa is free!
-1.719189
+3,996908
 A Santa is free!
-2.416410
+2,945535
+All Santas are busy!
+4,855685
+All Santas are busy!
+4,299067
 A Santa is free!
-3.391206
+0,930041
 A Santa is free!
-9.187354
+2,510116
 A Santa is free!
-2.074821
+3,094086
+All Santas are busy!
+6,746869
 A Santa is free!
-0.877893
+5,767119
 A Santa is free!
-2.491824
+1,762556
 A Santa is free!
-7.474753
+3,070293
 A Santa is free!
-3.492947
+1,156179
 A Santa is free!
-3.389761
+10,747850
+All Santas are busy!
+17,480606
 A Santa is free!
-2.369894
+3,937036
 All Santas are busy!
-5.343277
+10,482816
 A Santa is free!
-1.662049
+4,094841
 A Santa is free!
-3.068454
+1,855803
 A Santa is free!
-2.699497
+1,093317
 All Santas are busy!
-5.357224
+7,195906
 All Santas are busy!
-24.131180
-All Santas are busy!
-33.752057
-All Santas are busy!
-12.735922
+125,753157
 A Santa is free!
-1.992315
-A Santa is free!
-2.760332
+3,637511
 All Santas are busy!
-2.544966
+25,766647
 A Santa is free!
-5.517143
+5,455820
 A Santa is free!
-1.876382
+1,891416
 A Santa is free!
-1.199273
+1,599865
+A Santa is free!
+1,815294
+All Santas are busy!
+12,291195
 A Santa is free!
-2.412701
+3,260350
 A Santa is free!
-2.220482
+1,685348
 A Santa is free!
-3.530732
+2,031693
 A Santa is free!
-4.422571
+7,072025
 All Santas are busy!
-12.321020
+18,409887
+All Santas are busy!
+3,592522
+All Santas are busy!
+2,445983
 A Santa is free!
-4.744621
+1,670550
 A Santa is free!
-1.525374
+1,435167
+All Santas are busy!
+3,237101
 A Santa is free!
-2.459021
+4,906348
 A Santa is free!
-0.991046
+8,256559
 A Santa is free!
-1.629172
+2,116923
 A Santa is free!
-3.454766
+9,324455
 A Santa is free!
-2.505632
+1,024069
 A Santa is free!
-3.127681
+2,174543
 A Santa is free!
-2.053568
+1,498079
 A Santa is free!
-2.637193
+4,923733
 A Santa is free!
-3.788564
+2,303023
 A Santa is free!
-6.430266
+3,303287
 A Santa is free!
-8.688903
+1,135764
 A Santa is free!
-1.556311
+1,290419
 A Santa is free!
-3.541922
+1,378828
 A Santa is free!
-2.205432
+2,602291
 A Santa is free!
-5.124586
+3,634533
 A Santa is free!
-1.365447
+3,110668
 A Santa is free!
-3.349571
+2,277555
 A Santa is free!
-1.202088
+1,779644
 A Santa is free!
-2.583489
+3,403666
 A Santa is free!
-3.068345
+1,671178
 All Santas are busy!
-18.308139
-A Santa is free!
-4.626691
-A Santa is free!
-1.154952
+5,262744
 All Santas are busy!
-9.284384
+1,939278
+A Santa is free!
+1,791338
 A Santa is free!
-4.196796
+1,445580
 A Santa is free!
-2.463128
+1,140060
 A Santa is free!
-1.591701
+1,820230
 A Santa is free!
-1.516506
+6,632494
 All Santas are busy!
-94.903356
+39,600288
+A Santa is free!
+1,275250
 All Santas are busy!
-6.768278
+19,064956
 A Santa is free!
-1.381360
+1,905652
 A Santa is free!
-1.150497
+3,515862
 A Santa is free!
-1.559035
+1,193216
 A Santa is free!
-2.614154
+1,938569
 A Santa is free!
-6.501828
-All Santas are busy!
-1.699559
+4,953575
 A Santa is free!
-2.006951
+1,268324
 A Santa is free!
-2.546261
+0,903646
 A Santa is free!
-3.425160
+2,165035
 A Santa is free!
-2.485194
-All Santas are busy!
-22.596387
+9,665883
 A Santa is free!
-1.804023
+1,987678
 A Santa is free!
-2.835899
+1,838328
+All Santas are busy!
+3,475212
 A Santa is free!
-1.848007
+4,071456
 A Santa is free!
-2.500338
+1,203197
 A Santa is free!
-1.567889
+2,906012
+A Santa is free!
+2,372224
 All Santas are busy!
-17.671644
+2,410324
+A Santa is free!
+4,251451
 A Santa is free!
-1.027786
+3,163150
 All Santas are busy!
-2.435090
+97,165939
+All Santas are busy!
+15,258030
 A Santa is free!
-0.817771
+1,797216
 A Santa is free!
-1.286697
+1,187062
 A Santa is free!
-0.515937
+0,635395
 A Santa is free!
-6.041559
+1,788884
+All Santas are busy!
+6,373344
 A Santa is free!
-0.902181
+3,273174
 A Santa is free!
-1.823444
+2,112044
 A Santa is free!
-1.262347
+1,168887
 A Santa is free!
-2.011578
+3,008308
 A Santa is free!
-3.472068
+2,235022
 A Santa is free!
-4.939404
+1,724245
 A Santa is free!
-1.894780
-All Santas are busy!
-3.207971
-All Santas are busy!
-7.258336
+2,485423
 A Santa is free!
-2.608504
+2,072582
 A Santa is free!
-1.747621
+1,984491
+A Santa is free!
+6,622699
 All Santas are busy!
-31.656093
+2,371569
 A Santa is free!
-1.716297
+2,700670
 A Santa is free!
-1.985484
+2,156505
 A Santa is free!
-1.879288
-All Santas are busy!
-1.582666
+0,729037
 A Santa is free!
-2.534219
+2,027006
 A Santa is free!
-1.383400
+3,454669
 A Santa is free!
-7.009775
-All Santas are busy!
-9.777417
+0,668423
 A Santa is free!
-2.006012
+1,454415
 A Santa is free!
-1.250752
-All Santas are busy!
-3.042718
+17,442983
 A Santa is free!
-5.387135
-All Santas are busy!
-3.127516
+2,824598
 A Santa is free!
-1.780556
+1,486074
 All Santas are busy!
-7.500265
+53,425587
 A Santa is free!
-2.758933
+1,637384
 A Santa is free!
-2.868648
+3,181600
 All Santas are busy!
-10.612655
+4,824149
 A Santa is free!
-2.809821
+2,307613
 All Santas are busy!
-4.788440
-All Santas are busy!
-10.590390
+2,065763
+A Santa is free!
+2,919091
 A Santa is free!
-3.247072
+5,301569
+All Santas are busy!
+17,869343
 A Santa is free!
-1.394666
+3,012924
 A Santa is free!
-3.113044
+1,550124
 A Santa is free!
-1.383480
+1,685448
 A Santa is free!
-1.822003
+4,214063
 All Santas are busy!
-5.734322
+1,705158
+All Santas are busy!
+10,781304
 A Santa is free!
-1.280277
+2,228269
 A Santa is free!
-1.647156
+0,903940
 A Santa is free!
-3.814610
+0,722274
 A Santa is free!
-1.364928
+3,561624
+All Santas are busy!
+5,216932
 A Santa is free!
-1.379222
+4,151717
 A Santa is free!
-1.518893
+1,422334
 A Santa is free!
-4.320246
+4,306058
 A Santa is free!
-5.454235
+3,075018
+All Santas are busy!
+7,895757
+All Santas are busy!
+5,122285
+All Santas are busy!
+10,064332
 All Santas are busy!
-2.831413
+20,981426
 All Santas are busy!
-26.496983
+4,549151
+A Santa is free!
+1,654034
 All Santas are busy!
-19.021828
+18,847297
 A Santa is free!
-4.127317
+2,003635
 A Santa is free!
-1.819399
+1,888826
 A Santa is free!
-2.876408
+1,961251
+A Santa is free!
+1,983625
 All Santas are busy!
-2.994096
+5,901339
 A Santa is free!
-2.610479
+3,596584
 A Santa is free!
-2.139017
+3,736343
 A Santa is free!
-2.221497
-All Santas are busy!
-4.146313
+1,310314
 A Santa is free!
-1.199145
+2,970522
 A Santa is free!
-2.038524
-All Santas are busy!
-3.941743
-All Santas are busy!
-1.018952
+3,432138
 A Santa is free!
-4.310461
+4,469887
 A Santa is free!
-1.170252
-All Santas are busy!
-97.574219
+1,760769
 A Santa is free!
-2.157732
+2,961555
+All Santas are busy!
+10,336872
+All Santas are busy!
+2,754120
 A Santa is free!
-3.463773
+1,777445
 A Santa is free!
-12.926261
+4,031558
 All Santas are busy!
-10.696995
+5,172790
 A Santa is free!
-3.224399
+2,329891
 A Santa is free!
-1.350323
+1,328101
+All Santas are busy!
+2,980606
+All Santas are busy!
+15,053789
 A Santa is free!
-3.283166
+10,063279
 A Santa is free!
-5.009285
+3,290135
 A Santa is free!
-1.559532
+4,570889
 A Santa is free!
-1.141228
+1,448565
 All Santas are busy!
-2.229520
-All Santas are busy!
-5.667957
+4,926678
 A Santa is free!
-2.565251
+1,550553
 A Santa is free!
-0.711945
+4,654894
 A Santa is free!
-2.371772
+3,999176
 All Santas are busy!
-23.956357
+11,154455
 A Santa is free!
-1.498769
+4,277410
+All Santas are busy!
+4,062999
 A Santa is free!
-5.203048
+1,670421
 A Santa is free!
-1.998495
+5,454851
 A Santa is free!
-4.177158
+3,092793
 All Santas are busy!
-7.002457
+9,571041
 A Santa is free!
-0.865095
+18,531496
 A Santa is free!
-5.096876
+5,604101
 A Santa is free!
-1.634514
+3,945916
 All Santas are busy!
-2.817980
-All Santas are busy!
-28.818918
+95,343091
 A Santa is free!
-2.857771
+6,392159
 A Santa is free!
-1.569152
+16,767071
 A Santa is free!
-2.148593
+1,400658
 A Santa is free!
-1.776292
+1,389910
 A Santa is free!
-5.598003
-All Santas are busy!
-7.046666
-All Santas are busy!
-12.373257
+1,820458
 A Santa is free!
-4.499965
+7,581586
 A Santa is free!
-3.382564
+4,170061
 A Santa is free!
-3.935250
+1,219579
 A Santa is free!
-2.296359
+1,898184
 A Santa is free!
-2.520995
+3,755808
+All Santas are busy!
+6,434310
 A Santa is free!
-2.099903
+2,638160
 A Santa is free!
-0.857589
+2,501353
 A Santa is free!
-1.528529
-All Santas are busy!
-2.348248
+1,174769
 A Santa is free!
-3.899782
+2,356289
 A Santa is free!
-3.929124
+1,316378
 All Santas are busy!
-46.308125
+4,107582
 A Santa is free!
-4.600236
-All Santas are busy!
-2.557042
+0,915466
 A Santa is free!
-5.987462
+2,200397
 A Santa is free!
-6.556847
+1,913459
 A Santa is free!
-2.078708
+1,392882
 A Santa is free!
-3.862666
-All Santas are busy!
-27.601721
+2,929154
 A Santa is free!
-2.709310
+1,175451
 A Santa is free!
-1.753710
-All Santas are busy!
-4.446738
+5,796434
 A Santa is free!
-1.628129
+24,354410
+A Santa is free!
+1,125904
 All Santas are busy!
-10.531117
+12,208024
+All Santas are busy!
+37,810214
+A Santa is free!
+1,528759
 A Santa is free!
-1.031864
+1,304962
 A Santa is free!
-1.581914
+5,696829
 A Santa is free!
-5.886017
+5,169694
 A Santa is free!
-1.396413
+2,246345
 A Santa is free!
-1.511953
+1,336342
+All Santas are busy!
+9,021407
+All Santas are busy!
+5,384952
 A Santa is free!
-1.607523
+2,663823
 A Santa is free!
-2.414217
+2,147682
 A Santa is free!
-1.733742
+5,120764
 A Santa is free!
-2.595265
+1,120582
 A Santa is free!
-2.957774
+5,581849
 A Santa is free!
-2.137202
+5,465934
+All Santas are busy!
+14,484176
 A Santa is free!
-2.563804
+3,257631
+All Santas are busy!
+5,918918
 A Santa is free!
-1.463987
+1,636286
 All Santas are busy!
-11.074697
+11,721213
 A Santa is free!
-1.325993
+3,508689
+All Santas are busy!
+1,826120
 A Santa is free!
-2.656113
+1,492899
+All Santas are busy!
+7,887251
 A Santa is free!
-1.780886
+1,635655
 A Santa is free!
-4.401106
+4,657618
 A Santa is free!
-2.077653
+2,044213
 All Santas are busy!
-14.779815
+36,561259
 A Santa is free!
-2.146717
+1,249318
 A Santa is free!
-1.712931
+2,626962
 All Santas are busy!
-61.414883
+16,403417
 A Santa is free!
-1.110053
+1,334016
 A Santa is free!
-1.988687
+4,692027
+A Santa is free!
+1,199864
+A Santa is free!
+1,722252
 All Santas are busy!
-4.981773
+1,884304
 A Santa is free!
-1.345842
+1,430448
 A Santa is free!
-1.827155
+1,280639
 A Santa is free!
-1.225346
+6,495558
 A Santa is free!
-1.034591
-All Santas are busy!
-4.169655
+1,210559
 A Santa is free!
-3.568454
+4,795873
 A Santa is free!
-2.276833
+2,399170
 A Santa is free!
-2.019559
+3,252592
 A Santa is free!
-1.871425
+1,110010
 A Santa is free!
-0.818094
+1,157955
 A Santa is free!
-4.139599
+2,449654
 A Santa is free!
-1.143278
+3,170454
+All Santas are busy!
+17,725225
 A Santa is free!
-2.082134
+2,332811
 A Santa is free!
-8.349662
+2,146265
 A Santa is free!
-5.687213
+2,723417
 A Santa is free!
-1.707034
+0,417609
 A Santa is free!
-2.700412
+1,419328
 A Santa is free!
-1.586557
+2,569545
 All Santas are busy!
-7.722273
+34,346584
+All Santas are busy!
+2,600270
+A Santa is free!
+4,453334

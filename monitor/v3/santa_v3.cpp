@@ -44,7 +44,7 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
 #endif
 #ifdef V3_DELIVERY_DELAY_VERBOSE
     if (s == DELIVERY)
-        _start_stop_multi(START, TOT[DELIVERY], 1, false);
+        _start_stop_multi(START, TOT[DELIVERY], 1, true); // TODO set to false
 #endif
 
     while (turnstile[s] == 0)
@@ -102,7 +102,7 @@ void SantaClaus::start_service(SERVICE& s, unsigned int id)
         }
 #ifdef V3_DELIVERY_DELAY_VERBOSE
     if (s == DELIVERY)
-        _start_stop_multi(STOP, TOT[DELIVERY], 1, false);
+        _start_stop_multi(STOP, TOT[DELIVERY], 1, true); // TODO set to false
 #endif
 }
 
