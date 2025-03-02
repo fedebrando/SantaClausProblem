@@ -8,10 +8,11 @@
 #include "santa_v1.hpp"
 
 #define N_REINDEER 9
-#define N_ELVES 180
+#define N_ELVES 10
 #define MIN_ELVES 3 // Number of elves in a consulting group
 
-//#define STATS_VERBOSE_V1
+//#define V1_DELIVERY_TIME_VERBOSE
+#define V1_DELIVERY_DELAY_VERBOSE
 
 using namespace std;
 
@@ -111,6 +112,9 @@ void reindeer(SantaClaus& sc, int id)
 
         log("Reindeer " + to_string(id) + ": head back to the North Pole", 100);
         log("Reindeer " + to_string(id) + ": ready to deliver");
+#ifdef V1_DELIVERY_DELAY_VERBOSE
+        _start_stop_multi(START, N_REINDEER, 1);
+#endif
         sc.new_service(DELIVERY);
         log("Reindeer " + to_string(id) + ": head back to the Pacific Islands", 100);
     }
@@ -136,11 +140,14 @@ void santa(SantaClaus& sc)
         sc.start_service(s);
         if (s == DELIVERY)
         {
-#ifdef STATS_VERBOSE_V1
+#ifdef V1_DELIVERY_TIME_VERBOSE
             _start_stop();
 #endif
+#ifdef V1_DELIVERY_DELAY_VERBOSE
+            _start_stop_multi(STOP, N_REINDEER, 1);
+#endif
             log("Santa: delivering toys", 100);
-#ifdef STATS_VERBOSE_V1
+#ifdef V1_DELIVERY_TIME_VERBOSE
             _start_stop();
 #endif
         }

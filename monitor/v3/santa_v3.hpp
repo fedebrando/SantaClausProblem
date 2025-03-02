@@ -6,10 +6,10 @@
 #include <mutex>
 #include <vector>
 
-//#define ELVES_WAIT_TIME_VERBOSE
-#define LAST_REINDEER_WAIT_TIME_VERBOSE
+//#define V3_ELVES_WAIT_TIME_VERBOSE
+#define V3_DELIVERY_DELAY_VERBOSE // last rein wait time
 
-#if defined(ELVES_WAIT_TIME_VERBOSE) || defined(LAST_REINDEER_WAIT_TIME_VERBOSE)
+#if defined(V3_ELVES_WAIT_TIME_VERBOSE) || defined(V3_DELIVERY_DELAY_VERBOSE)
 #include <iostream>
 #include "statistics.hpp"
 #endif

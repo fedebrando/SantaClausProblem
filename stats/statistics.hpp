@@ -34,7 +34,7 @@ void _start_stop();
  * @brief Measures and prints the time between two instants in a concurrent enviroment
  * 
  * This function measures time between two instants, starting from
- * `n_start_min`-th call and stop at the `n_stop_min`-th call
+ * `n_start_min`-th start call and stop at the `n_stop_min`-th stop call
  * 
  * @param act Call mode
  * @param n_start_min Number of start calls to start chronometer

@@ -21,7 +21,7 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
 {
     unique_lock<mutex> lock(mtx);
 
-#ifdef ELVES_WAIT_TIME_VERBOSE
+#ifdef V3_ELVES_WAIT_TIME_VERBOSE
     chrono::_V2::system_clock::time_point start;
     chrono::_V2::system_clock::time_point stop;
     chrono::duration<double, milli> elapsed;
@@ -30,18 +30,18 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
     if (id_santa_selected != NONE)
         if (await_someone[id_santa_selected].any()) // selected Santa is free
             await_someone[id_santa_selected].notify_one();
-#ifdef ELVES_WAIT_TIME_VERBOSE
+#ifdef V3_ELVES_WAIT_TIME_VERBOSE
     if (s == CONSULT)
         start = chrono::high_resolution_clock::now();
 #endif
-#ifdef LAST_REINDEER_WAIT_TIME_VERBOSE
+#ifdef V3_DELIVERY_DELAY_VERBOSE
     if (s == DELIVERY)
         _start_stop_multi(START, TOT[DELIVERY], 1, false);
 #endif
 
     while (turnstile[s] == 0)
         wait_service[s].wait(lock);
-#ifdef ELVES_WAIT_TIME_VERBOSE
+#ifdef V3_ELVES_WAIT_TIME_VERBOSE
     if (s == CONSULT)
     {
         stop = chrono::high_resolution_clock::now();
@@ -92,7 +92,7 @@ void SantaClaus::start_service(SERVICE& s, unsigned int id)
             await_someone[i].notify_one();
             break;
         }
-#ifdef LAST_REINDEER_WAIT_TIME_VERBOSE
+#ifdef V3_DELIVERY_DELAY_VERBOSE
     if (s == DELIVERY)
         _start_stop_multi(STOP, TOT[DELIVERY], 1, false);
 #endif

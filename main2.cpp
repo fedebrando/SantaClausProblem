@@ -11,7 +11,7 @@
 #define N_ELVES 10
 #define MIN_ELVES 3 // Number of elves in a consulting group
 
-//#define STATS_VERBOSE_V2
+//#define V2_DELIVERY_TIME_VERBOSE
 
 using namespace std;
 
@@ -110,11 +110,11 @@ void reindeer(SantaClaus& sc, int id)
         log("Reindeer " + to_string(id) + ": head back to the North Pole", 100);
         log("Reindeer " + to_string(id) + ": ready to deliver");
         sc.new_delivery();
-#ifdef STATS_VERBOSE_V2
+#ifdef V2_DELIVERY_TIME_VERBOSE
         _start_stop_multi(START, 1, N_REINDEER + 1);
 #endif
         log("Reindeer " + to_string(id) + ": delivering toys", 100);
-#ifdef STATS_VERBOSE_V2
+#ifdef V2_DELIVERY_TIME_VERBOSE
         _start_stop_multi(STOP, 1, N_REINDEER + 1);
 #endif
         sc.end_delivery();
@@ -142,11 +142,11 @@ void santa(SantaClaus& sc)
         sc.start_service(s);
         if (s == DELIVERY)
         {
-#ifdef STATS_VERBOSE_V2
+#ifdef V2_DELIVERY_TIME_VERBOSE
             _start_stop_multi(START, 1, N_REINDEER + 1);
 #endif
             log("Santa: delivering toys", 100);
-#ifdef STATS_VERBOSE_V2
+#ifdef V2_DELIVERY_TIME_VERBOSE
             _start_stop_multi(STOP, 1, N_REINDEER + 1);
 #endif
         }

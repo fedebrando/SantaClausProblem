@@ -6,9 +6,9 @@
 #include <mutex>
 #include <vector>
 
-#define PROB_VERBOSE
+#define V1_PROB_VERBOSE
 
-#ifdef PROB_VERBOSE
+#ifdef V1_PROB_VERBOSE
 #include <iostream>
 #endif
 
