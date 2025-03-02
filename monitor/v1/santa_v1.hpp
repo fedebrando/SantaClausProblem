@@ -6,9 +6,9 @@
 #include <mutex>
 #include <vector>
 
-#define V1_PROB_VERBOSE
+#define V1_SANTA_STATE_FOR_DELIVERY
 
-#ifdef V1_PROB_VERBOSE
+#ifdef V1_SANTA_STATE_FOR_DELIVERY
 #include <iostream>
 #endif
 

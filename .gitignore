@@ -1,4 +1,5 @@
 
+.vscode
 *.o
 main1
 main2

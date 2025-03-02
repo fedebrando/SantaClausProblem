@@ -43,9 +43,8 @@ class SantaClausV3 = Monitor
 
     entry void new_service(SERVICE s)
     {
-        if (id_santa_selected != NONE)
-            if (await_someone[id_santa_selected].any()) // selected Santa is free
-                await_someone[id_santa_selected].notify_one();
+        if (id_santa_selected != NONE && await_someone[id_santa_selected].any()) // selected Santa is free
+            await_someone[id_santa_selected].notify_one();
         while (turnstile[s] == 0)
             wait_service[s].wait(lock);
         

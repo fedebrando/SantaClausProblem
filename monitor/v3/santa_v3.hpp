@@ -6,6 +6,7 @@
 #include <mutex>
 #include <vector>
 
+#define V3_SANTA_STATE_FOR_DELIVERY
 //#define V3_ELVES_WAIT_TIME_VERBOSE
 #define V3_DELIVERY_DELAY_VERBOSE // last rein wait time
 

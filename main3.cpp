@@ -154,7 +154,7 @@ void santa(SantaClaus& sc, int id)
         if (s == DELIVERY)
             log("Santa " + to_string(id) + ": delivering toys", 100);
         else
-            log("Santa " + to_string(id) + ": answer all questions in session", 400); // TODO -> rimettere a 10 (forse...)
+            log("Santa " + to_string(id) + ": answer all questions in session", 600); // TODO -> rimettere a 10 (forse...)
         sc.end_service(id);
         log("Santa " + to_string(id) + ": end of service");
     }

@@ -25,8 +25,8 @@ void SantaClaus::new_service(SERVICE s)
     if (await_someone.any()) // Santa is free
         await_someone.notify_one();
     
-#ifdef V1_PROB_VERBOSE
-    if (s == DELIVERY && wait_service[s].getCnt() == TOT[DELIVERY] - 1)
+#ifdef V1_SANTA_STATE_FOR_DELIVERY
+    if (s == DELIVERY && wait_service[s].getCnt() == TOT[s] - 1)
     {
         if (await_someone.any())
             cout << "Santa is free!" << endl;

@@ -27,9 +27,17 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
     chrono::duration<double, milli> elapsed;
 #endif
 
-    if (id_santa_selected != NONE)
-        if (await_someone[id_santa_selected].any()) // selected Santa is free
-            await_someone[id_santa_selected].notify_one();
+    if (id_santa_selected != NONE && await_someone[id_santa_selected].any()) // selected Santa is free
+        await_someone[id_santa_selected].notify_one();
+#ifdef V3_SANTA_STATE_FOR_DELIVERY
+    if (s == DELIVERY && wait_service[s].getCnt() == TOT[s] - 1)
+    {
+        if (id_santa_selected != NONE && await_someone[id_santa_selected].any())
+            cout << "A Santa is free!" << endl;
+        else
+            cout << "All Santas are busy!" << endl;
+    }
+#endif
 #ifdef V3_ELVES_WAIT_TIME_VERBOSE
     if (s == CONSULT)
         start = chrono::high_resolution_clock::now();
