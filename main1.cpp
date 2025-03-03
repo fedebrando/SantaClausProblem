@@ -11,8 +11,8 @@
 #define N_ELVES 10
 #define MIN_ELVES 3 // Number of elves in a consulting group
 
-//#define V1_DELIVERY_TIME_VERBOSE
-#define V1_DELIVERY_DELAY_VERBOSE
+#define V1_DELIVERY_TIME_VERBOSE
+//#define V1_DELIVERY_DELAY_VERBOSE
 
 using namespace std;
 

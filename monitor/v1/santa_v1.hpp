@@ -6,7 +6,7 @@
 #include <mutex>
 #include <vector>
 
-#define V1_SANTA_STATE_FOR_DELIVERY
+//#define V1_SANTA_STATE_FOR_DELIVERY
 
 #ifdef V1_SANTA_STATE_FOR_DELIVERY
 #include <iostream>
