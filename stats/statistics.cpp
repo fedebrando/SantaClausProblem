@@ -26,10 +26,7 @@ void _start_stop()
 }
 
 void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma)
-{
-    static mutex mtx;
-    unique_lock<mutex> lock(mtx);
-    
+{    
     static unsigned int n_start = 0;
     static unsigned int n_stop = 0;
     static chrono::_V2::system_clock::time_point start;
@@ -60,6 +57,14 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
             n_stop = 0;
         }
     }
+}
+
+void _ex_start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma)
+{
+    static mutex mtx;
+    unique_lock<mutex> lock(mtx);
+
+    _start_stop_multi(act, n_start_min, n_stop_min, comma);
 }
 
 string dot2comma(string s)

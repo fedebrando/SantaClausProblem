@@ -113,7 +113,7 @@ void reindeer(SantaClaus& sc, int id)
         log("Reindeer " + to_string(id) + ": head back to the North Pole", 100);
         log("Reindeer " + to_string(id) + ": ready to deliver");
 #ifdef V1_DELIVERY_DELAY_VERBOSE
-        _start_stop_multi(START, N_REINDEER, 1);
+        _ex_start_stop_multi(START, N_REINDEER, 1);
 #endif
         sc.new_service(DELIVERY);
         log("Reindeer " + to_string(id) + ": head back to the Pacific Islands", 100);
@@ -144,7 +144,7 @@ void santa(SantaClaus& sc)
             _start_stop();
 #endif
 #ifdef V1_DELIVERY_DELAY_VERBOSE
-            _start_stop_multi(STOP, N_REINDEER, 1);
+            _ex_start_stop_multi(STOP, N_REINDEER, 1);
 #endif
             log("Santa: delivering toys", 100);
 #ifdef V1_DELIVERY_TIME_VERBOSE
