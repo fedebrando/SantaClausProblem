@@ -5,13 +5,14 @@
 #include "cnt_condition_variable.hpp"
 #include "utilities.hpp"
 #include "statistics.hpp"
-#include "santa_v2.hpp"
+#include "santa_v1.hpp"
 
 #define N_REINDEER 9
 #define N_ELVES 10
 #define MIN_ELVES 3 // Number of elves in a consulting group
 
-#define V2_DELIVERY_TIME_VERBOSE
+//#define V1_DELIVERY_TIME_VERBOSE
+//#define V1_DELIVERY_DELAY_VERBOSE
 
 using namespace std;
 
@@ -69,10 +70,9 @@ int main(void)
     return 0;
 }
 
-void christmas_handler(int signum) 
+void christmas_handler(int signum)
 {
     unique_lock<mutex> lock(mtx);
-
     is_christmas = true;
     wait_christmas.notify_one();
 }
@@ -97,8 +97,10 @@ void reindeer(SantaClaus& sc, int id)
     while (true)
     {
         log("Reindeer " + to_string(id) + ": on vacation");
+
         {
             unique_lock<mutex> lock(mtx);
+            
             while (!is_christmas)
                 wait_christmas.wait(lock);
 
@@ -107,17 +109,13 @@ void reindeer(SantaClaus& sc, int id)
             else
                 wait_christmas.notify_one();
         }
+
         log("Reindeer " + to_string(id) + ": head back to the North Pole", 100);
         log("Reindeer " + to_string(id) + ": ready to deliver");
-        sc.new_delivery();
-#ifdef V2_DELIVERY_TIME_VERBOSE
-        _ex_start_stop_multi(START, 1, N_REINDEER + 1);
+#ifdef V1_DELIVERY_DELAY_VERBOSE
+        _ex_start_stop_multi(START, N_REINDEER, 1);
 #endif
-        log("Reindeer " + to_string(id) + ": delivering toys", 100);
-#ifdef V2_DELIVERY_TIME_VERBOSE
-        _ex_start_stop_multi(STOP, 1, N_REINDEER + 1);
-#endif
-        sc.end_delivery();
+        sc.new_service(DELIVERY);
         log("Reindeer " + to_string(id) + ": head back to the Pacific Islands", 100);
     }
 }
@@ -128,7 +126,7 @@ void elf(SantaClaus& sc, int id)
     {
         log("Elf " + to_string(id) + ": making new toys", 400);
         log("Elf " + to_string(id) + ": ready to talk");
-        sc.new_consult();
+        sc.new_service(CONSULT);
     }
 }
 
@@ -142,17 +140,20 @@ void santa(SantaClaus& sc)
         sc.start_service(s);
         if (s == DELIVERY)
         {
-#ifdef V2_DELIVERY_TIME_VERBOSE
-            _ex_start_stop_multi(START, 1, N_REINDEER + 1);
+#ifdef V1_DELIVERY_TIME_VERBOSE
+            _start_stop();
+#endif
+#ifdef V1_DELIVERY_DELAY_VERBOSE
+            _ex_start_stop_multi(STOP, N_REINDEER, 1);
 #endif
             log("Santa: delivering toys", 100);
-#ifdef V2_DELIVERY_TIME_VERBOSE
-            _ex_start_stop_multi(STOP, 1, N_REINDEER + 1);
+#ifdef V1_DELIVERY_TIME_VERBOSE
+            _start_stop();
 #endif
         }
         else
             log("Santa: answer all questions in session", 10);
-        sc.end_service(s);
+        sc.end_service();
         log("Santa: end of service");
     }
 }

@@ -1,58 +1,63 @@
+
 CC = g++
 CFLAGS = -O3 -Wall -pthread -std=c++17
-LFLAGS = -pthread 
-LIB = lib
-STATS = stats
-V1 = monitor/v1
-V2 = monitor/v2
-V3 = monitor/v3
+LFLAGS = -pthread
 
-OUT = main1 main2 main3 main3multi
+SRC = src
 
-all: $(OUT)
+LIB = $(SRC)/lib
+STATS = $(SRC)/stats
+V1 = $(SRC)/monitor/v1
+V2 = $(SRC)/monitor/v2
+V3 = $(SRC)/monitor/v3
 
-main3multi: main3multi.o statistics.o
-	$(CC) -I$(STATS) -o $@ $^ $(LFLAGS)
+BUILD = build
 
-main1: main1.o santa_v1.o cnt_condition_variable.o utilities.o statistics.o
+OBJ = $(BUILD)/obj
+BIN = $(BUILD)/bin
+
+OUT = $(BIN)/main1 $(BIN)/main2 $(BIN)/main3
+
+all: $(BUILD) $(BIN) $(OBJ) $(OUT)
+
+$(BUILD) $(BIN) $(OBJ):
+	mkdir -p $@
+
+$(BIN)/main1: $(OBJ)/main1.o $(OBJ)/santa_v1.o $(OBJ)/cnt_condition_variable.o $(OBJ)/utilities.o $(OBJ)/statistics.o
 	$(CC) -o $@ $^ $(LFLAGS)
 
-main2: main2.o santa_v2.o cnt_condition_variable.o utilities.o statistics.o
+$(BIN)/main2: $(OBJ)/main2.o $(OBJ)/santa_v2.o $(OBJ)/cnt_condition_variable.o $(OBJ)/utilities.o $(OBJ)/statistics.o
 	$(CC) -o $@ $^ $(LFLAGS)
 
-main3: main3.o santa_v3.o cnt_condition_variable.o utilities.o statistics.o
+$(BIN)/main3: $(OBJ)/main3.o $(OBJ)/santa_v3.o $(OBJ)/cnt_condition_variable.o $(OBJ)/utilities.o $(OBJ)/statistics.o
 	$(CC) -o $@ $^ $(LFLAGS)
 
-main3multi.o: main3multi.cpp
-	$(CC) -I$(STATS) $(CFLAGS) -c -o $@ $<
-
-main1.o: main1.cpp
+$(OBJ)/main1.o: $(SRC)/main1.cpp
 	$(CC) -I$(STATS) -I$(LIB) -I$(V1) $(CFLAGS) -c -o $@ $<
 
-main2.o: main2.cpp
+$(OBJ)/main2.o: $(SRC)/main2.cpp
 	$(CC) -I$(STATS) -I$(LIB) -I$(V2) $(CFLAGS) -c -o $@ $<
 
-main3.o: main3.cpp
+$(OBJ)/main3.o: $(SRC)/main3.cpp
 	$(CC) -I$(STATS) -I$(LIB) -I$(V3) $(CFLAGS) -c -o $@ $<
 
-statistics.o: $(STATS)/statistics.cpp $(STATS)/statistics.hpp
+$(OBJ)/statistics.o: $(STATS)/statistics.cpp $(STATS)/statistics.hpp
 	$(CC) -I$(STATS) $(CFLAGS) -c -o $@ $<
 
-utilities.o: $(LIB)/utilities.cpp $(LIB)/utilities.hpp
+$(OBJ)/utilities.o: $(LIB)/utilities.cpp $(LIB)/utilities.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-cnt_condition_variable.o: $(LIB)/cnt_condition_variable.cpp $(LIB)/cnt_condition_variable.hpp
+$(OBJ)/cnt_condition_variable.o: $(LIB)/cnt_condition_variable.cpp $(LIB)/cnt_condition_variable.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-santa_v1.o: $(V1)/santa_v1.cpp $(V1)/santa_v1.hpp
+$(OBJ)/santa_v1.o: $(V1)/santa_v1.cpp $(V1)/santa_v1.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-santa_v2.o: $(V2)/santa_v2.cpp $(V2)/santa_v2.hpp
+$(OBJ)/santa_v2.o: $(V2)/santa_v2.cpp $(V2)/santa_v2.hpp
 	$(CC) -I$(LIB) $(CFLAGS) -c -o $@ $<
 
-santa_v3.o: $(V3)/santa_v3.cpp $(V3)/santa_v3.hpp
+$(OBJ)/santa_v3.o: $(V3)/santa_v3.cpp $(V3)/santa_v3.hpp
 	$(CC) -I$(LIB) -I$(STATS) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f *.o *~ $(OUT)
-
+	rm -rf $(BUILD)
