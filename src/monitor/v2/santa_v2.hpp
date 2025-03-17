@@ -30,7 +30,7 @@ class SantaClaus
         cnt_condition_variable await_someone;
         cnt_condition_variable wait_all_passed;
         cnt_condition_variable wait_greetings;
-        cnt_condition_variable wait_reindeer_return;
+        cnt_condition_variable wait_clients_finish;
 
         vector<cnt_condition_variable> wait_service;
         vector<unsigned int> turnstile;
@@ -59,19 +59,18 @@ class SantaClaus
         ~SantaClaus();
 
         /**
-         * @brief An elf requires new consultation to Santa Claus as a RPC
+         * @brief A rein or an elf require service to Santa Claus
+         * 
+         * @param s The required service
          */
-        void new_consult();
+        void new_service(SERVICE s);
 
         /**
-         * @brief A rein make itself available for delivering toys
+         * @brief A rein or an elf terminate its service consumption
+         * 
+         * @param s The required service
          */
-        void new_delivery();
-
-        /**
-         * @brief A rein terminates its delivery
-         */
-        void end_delivery();
+        void consumed_service(SERVICE s);
 
         /**
          * @brief Santa Claus makes himself available to provide a service
