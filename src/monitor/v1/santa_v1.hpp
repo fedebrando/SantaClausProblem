@@ -64,7 +64,7 @@ class SantaClaus
         ~SantaClaus();
 
         /**
-         * @brief A rein or an elf require service to Santa Claus as a RPC
+         * @brief A deer or an elf require service to Santa Claus as a RPC
          * 
          * @param s The required service
          */

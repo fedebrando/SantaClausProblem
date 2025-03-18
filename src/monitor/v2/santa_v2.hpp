@@ -59,14 +59,14 @@ class SantaClaus
         ~SantaClaus();
 
         /**
-         * @brief A rein or an elf require service to Santa Claus
+         * @brief A deer or an elf require service to Santa Claus
          * 
          * @param s The required service
          */
         void new_service(SERVICE s);
 
         /**
-         * @brief A rein or an elf terminate its service consumption
+         * @brief A deer or an elf terminate its service consumption
          * 
          * @param s The required service
          */
