@@ -44,3 +44,6 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also d
 - To display **delivery delays** (<i>ms</i>), uncomment the `#define V3_DELIVERY_DELAY_VERBOSE` directive in `src/monitor/v3/santa_v3.hpp`.
 - To display **Santa's state** when all reindeer arrive, uncomment the `#define V3_SANTA_STATE_FOR_DELIVERY` directive in `src/monitor/v3/santa_v3.hpp`.
 - To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `src/monitor/v3/santa_v3.hpp`.
+
+##
+You can find the documentation related to the C++ <i>high_resolution_clock</i> function at [this link](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock).
