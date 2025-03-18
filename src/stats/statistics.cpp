@@ -4,8 +4,8 @@
 void _start_stop()
 {
     static bool first_time = true;
-    static chrono::_V2::system_clock::time_point start;
-    chrono::_V2::system_clock::time_point stop;
+    static chrono::_V2::high_resolution_clock::time_point start;
+    chrono::_V2::high_resolution_clock::time_point stop;
     chrono::duration<double, milli> elapsed;
     string to_print;
 
@@ -29,8 +29,8 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
 {    
     static unsigned int n_start = 0;
     static unsigned int n_stop = 0;
-    static chrono::_V2::system_clock::time_point start;
-    chrono::_V2::system_clock::time_point stop;
+    static chrono::_V2::high_resolution_clock::time_point start;
+    chrono::_V2::high_resolution_clock::time_point stop;
     chrono::duration<double, milli> elapsed;
     string to_print;
 
@@ -38,7 +38,10 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
     {
         n_start++;
         if (n_start == n_start_min)
+        {
             start = chrono::high_resolution_clock::now();
+        }
+        //cout << "START (" << n_start << "/" << n_start_min << ")" << endl;
     }
     else
     {
@@ -56,6 +59,7 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
             n_start = 0;
             n_stop = 0;
         }
+        //cout << "STOP (" << n_stop << "/" << n_stop_min << ")" << endl;
     }
 }
 

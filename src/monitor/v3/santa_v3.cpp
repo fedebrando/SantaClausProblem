@@ -22,8 +22,8 @@ void SantaClaus::new_service(SERVICE s, unsigned int& id_santa)
     unique_lock<mutex> lock(mtx);
 
 #ifdef V3_ELVES_WAIT_TIME_VERBOSE
-    chrono::_V2::system_clock::time_point start;
-    chrono::_V2::system_clock::time_point stop;
+    chrono::_V2::high_resolution_clock::time_point start;
+    chrono::_V2::high_resolution_clock::time_point stop;
     chrono::duration<double, milli> elapsed;
 #endif
 

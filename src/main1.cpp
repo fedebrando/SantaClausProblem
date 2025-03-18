@@ -79,9 +79,9 @@ void christmas_handler(int signum)
 
 void christmas_signal()
 {
-    chrono::_V2::system_clock::time_point t0(chrono::high_resolution_clock::now());
+    chrono::_V2::high_resolution_clock::time_point t0(chrono::high_resolution_clock::now());
     chrono::milliseconds dt(10000);
-    chrono::_V2::system_clock::time_point t_stop(t0);
+    chrono::_V2::high_resolution_clock::time_point t_stop(t0);
 
     while (true)
     {
