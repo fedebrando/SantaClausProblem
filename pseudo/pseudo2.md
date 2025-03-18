@@ -46,7 +46,7 @@ class SantaClausV2 = Monitor
 
     entry void consumed_service(SERVICE s)
     {
-        if (wait_end_of_service.getCnt() + 1 == (s == DELIVERY ? TOT[s] : MIN_ELVES) - 1)
+        if (wait_end_of_service.getCnt() + 1 == (s == DELIVERY ? TOT[s] : MIN_ELVES))
             wait_clients_finish.notify_one();
         while (!end_of_service)
             wait_end_of_service.wait(lock);
