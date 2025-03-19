@@ -27,8 +27,10 @@ enum ACTION
 
 /**
  * @brief Measures and prints the time between two consecutive calls
+ *
+ * @param comma `true` to print values with comma instead dot, `false` otherwise (default: `false`)
  */
-void _start_stop();
+void _start_stop(bool comma = false);
 
 /**
  * @brief Measures and prints the time between two instants in a concurrent enviroment (unprotected)
@@ -43,7 +45,7 @@ void _start_stop();
  * 
  * @warning This function must be called only under mutually exlusive block
  */
-void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma = true);
+void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma = false);
 
 /**
  * @brief Measures and prints the time between two instants in a concurrent enviroment (protected)
@@ -56,7 +58,7 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
  * @param n_stop_min Number of stop calls to stop chronometer
  * @param comma `true` to print values with comma instead dot, `false` otherwise (default: `false`)
  */
-void _ex_start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma = true);
+void _ex_start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop_min, bool comma = false);
 
 /**
  * @brief Replaces dots with commas

@@ -1,7 +1,7 @@
 
 #include "statistics.hpp"
 
-void _start_stop()
+void _start_stop(bool comma)
 {
     static bool first_time = true;
     static chrono::_V2::high_resolution_clock::time_point start;
@@ -18,7 +18,10 @@ void _start_stop()
     {
         stop = chrono::high_resolution_clock::now();
         elapsed = stop - start;
-        cout << dot2comma(to_string(elapsed.count())) << endl;
+        if (comma)
+            cout << dot2comma(to_string(elapsed.count())) << endl;
+        else
+            cout << to_string(elapsed.count()) << endl;
 
         // reset value
         first_time = true;
@@ -38,10 +41,7 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
     {
         n_start++;
         if (n_start == n_start_min)
-        {
             start = chrono::high_resolution_clock::now();
-        }
-        //cout << "START (" << n_start << "/" << n_start_min << ")" << endl;
     }
     else
     {
@@ -59,7 +59,6 @@ void _start_stop_multi(ACTION act, unsigned int n_start_min, unsigned int n_stop
             n_start = 0;
             n_stop = 0;
         }
-        //cout << "STOP (" << n_stop << "/" << n_stop_min << ")" << endl;
     }
 }
 
