@@ -46,4 +46,5 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also d
 - To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `src/monitor/v3/santa_v3.hpp`.
 
 ##
+The complete statistics are reported in `stats/stats.xlsx`, where you can also find the documentation about the system used to test the solutions in `Info` section.
 You can find the documentation related to the C++ <i>high_resolution_clock</i> function at [this link](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock).
