@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Santa_Claus_v1" version="121">
+  <gspn name="PT" show-color-cmd="false" show-fluid-cmd="false" show-timed-cmd="false" view-rates="false">
+    <nodes>
+      <transition label-x="4.5" label-y="0.0" name="StartBarrier" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="17.85" y="15.0"/>
+      <place label-x="-0.5" label-y="-2.0" marking="9" name="AllDeerArrived" text-size="SMALL" x="14.0" y="10.0"/>
+      <place label-y="-2.0" marking="1" name="SantaSleeping" text-size="SMALL" x="20.0" y="10.0"/>
+      <place label-x="-3.5" label-y="0.0" name="dDelivering" text-size="SMALL" x="14.0" y="19.0"/>
+      <place label-x="4.0" label-y="0.0" name="SDelivering" text-size="SMALL" x="20.0" y="19.0"/>
+      <transition delay="0.01" label-x="-3.5" label-y="0.0" name="dDelivery" nservers-x="0.5" rotation="4.71238898038469" text-size="SMALL" type="EXP" x="14.55" y="24.0"/>
+      <transition delay="0.01" label-x="3.5" label-y="0.0" name="SDelivery" nservers-x="0.5" rotation="4.71238898038469" text-size="SMALL" type="EXP" x="20.55" y="24.0"/>
+      <place label-x="-3.5" label-y="0.0" name="dDelivered" text-size="SMALL" x="14.0" y="28.0"/>
+      <place label-x="3.5" label-y="0.0" name="SDelivered" text-size="SMALL" x="20.0" y="28.0"/>
+      <transition label-x="4.0" label-y="0.0" name="DoneBarrier" rotation="4.71238898038469" text-size="SMALL" type="IMM" x="17.85" y="32.0"/>
+    </nodes>
+    <edges>
+      <arc head="StartBarrier" kind="INPUT" mult="9" mult-x="1.5" mult-y="0.0" tail="AllDeerArrived"/>
+      <arc head="StartBarrier" kind="INPUT" mult-k="0.50693359375" tail="SantaSleeping"/>
+      <arc head="dDelivering" kind="OUTPUT" mult="9" mult-x="1.5" mult-y="0.0" tail="StartBarrier"/>
+      <arc head="SDelivering" kind="OUTPUT" tail="StartBarrier"/>
+      <arc head="dDelivery" kind="INPUT" tail="dDelivering"/>
+      <arc head="SDelivery" kind="INPUT" tail="SDelivering"/>
+      <arc head="dDelivered" kind="OUTPUT" tail="dDelivery"/>
+      <arc head="SDelivered" kind="OUTPUT" tail="SDelivery"/>
+      <arc head="DoneBarrier" kind="INPUT" mult="9" mult-y="0.0" tail="dDelivered"/>
+      <arc head="DoneBarrier" kind="INPUT" tail="SDelivered"/>
+      <arc head="AllDeerArrived" kind="OUTPUT" mult="9" tail="DoneBarrier">
+        <point x="17.0" y="35.5"/>
+        <point x="11.5" y="35.5"/>
+        <point x="8.5" y="30.0"/>
+        <point x="8.5" y="29.5"/>
+        <point x="8.0" y="16.0"/>
+        <point x="8.0" y="13.0"/>
+        <point x="8.5" y="11.0"/>
+        <point x="9.0" y="10.0"/>
+        <point x="10.0" y="9.0"/>
+        <point x="11.5" y="9.5"/>
+      </arc>
+      <arc head="SantaSleeping" kind="OUTPUT" tail="DoneBarrier">
+        <point x="20.0" y="35.5"/>
+        <point x="20.5" y="35.5"/>
+        <point x="25.0" y="35.5"/>
+        <point x="27.0" y="31.5"/>
+        <point x="27.0" y="31.0"/>
+        <point x="27.5" y="20.5"/>
+        <point x="27.5" y="20.0"/>
+        <point x="26.0" y="11.5"/>
+        <point x="25.0" y="9.5"/>
+      </arc>
+    </edges>
+  </gspn>
+  <measures gspn-name="PT" name="Measures" simplified-UI="false">
+    <assignments/>
+    <greatspn confidence="CONF_99" mode="EGSPN_SIMUL"/>
+    <formulas>
+      <formula comment="Basic statistics of the toolchain execution." language="STAT"/>
+      <formula language="ALL"/>
+    </formulas>
+  </measures>
+</project>

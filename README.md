@@ -2,6 +2,13 @@
 # Santa Claus Problem
 Let us indicate the project root directory with `/`.
 
+## Petri net models
+The folder `/Petri_net_models` includes the Petri net models (actually, GSPN and DTPN models) reported in the paper <i>Exposing the Concurrency of the Santa Claus Problem</i>, submitted for publication by F. Brandini, A. Mazzocchi and S. Caselli.
+
+All models in format .PNPRO can be open and analyzed with the tool GreatSPN3.1, available at [this repo](https://github.com/greatspn/SOURCES).
+
+Last compatibility check: July 6, 2025
+
 ## Timed activities
 All timed activities occurring in the Santa Claus Problem  are implemented as random durations with values drawn from negative exponential distributions. The samples come from the <i>exp_dis(avg)</i> function described at `/src/lib/utilities.hpp`; this function samples a negative exponential distribution with average <i>avg</i> and returns the sampled value.
 
@@ -50,6 +57,6 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also d
 - To display **Santa's state** when all reindeer arrive, uncomment the `#define V3_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v3/santa_v3.hpp`.
 - To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `/src/monitor/v3/santa_v3.hpp`.
 
-##
+### Docs
 The complete statistics are reported in `/stats/stats.xlsx`, where you can also find the documentation about the system used to test the solutions in `Info` section.
 You can find the documentation related to the C++ <i>high_resolution_clock</i> function at [this link](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock).

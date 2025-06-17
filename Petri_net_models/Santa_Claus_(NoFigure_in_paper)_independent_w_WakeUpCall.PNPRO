@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Santa_Claus_v1" version="121">
+  <gspn name="PT" show-color-cmd="false" show-fluid-cmd="false" view-rates="false" zoom="75">
+    <nodes>
+      <place label-x="0.1875" label-y="-2.1875" name="DeerTanning" x="5.583333333333333" y="3.3125"/>
+      <transition label-x="3.3125" label-y="-1.625" name="DeerArriving" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="6.050000000000002" y="18.916666666666668"/>
+      <transition label-x="4.5" label-y="0.0" name="DeerBarrier" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="6.35" y="29.833333333333336"/>
+      <transition label-x="-2.5" label-y="0.0" name="fly" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="6.05" y="39.833333333333336"/>
+      <transition label-x="2.5" label-y="0.0" name="deliver" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="10.05" y="39.833333333333336"/>
+      <place label-x="-3.0" label-y="0.0" name="arrived" x="5.5" y="24.833333333333336"/>
+      <place label-y="-2.0" marking="1" name="SantaSleeping" x="16.0" y="13.0"/>
+      <place label-x="-3.0" label-y="0.0" name="flying" x="5.5" y="34.833333333333336"/>
+      <place label-x="3.5" label-y="0.0" name="delivering" x="9.5" y="34.833333333333336"/>
+      <place label-x="-3.0" label-y="0.5" name="doneFly" x="6.0" y="43.0"/>
+      <place label-x="3.0" label-y="0.0" name="doneDeliv" x="9.5" y="43.833333333333336"/>
+      <transition label-x="-2.5" label-y="-1.0" name="synchD" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="5.85" y="48.0"/>
+      <place label-x="4.5" label-y="0.5" name="BackToPacific" x="5.5" y="51.833333333333336"/>
+      <transition label-x="2.5" label-y="0.0" name="back" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="1.05" y="50.833333333333336"/>
+      <transition label-x="-4.5" label-y="0.0" name="ElvesBarrier" priority="2" priority-x="2.0" priority-y="0.0" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="26.85" y="18.0"/>
+      <place label-x="-4.0" label-y="0.0" marking="10" name="ElvesWorking" x="26.083333333333332" y="3.666666666666667"/>
+      <transition label-x="-4.0" label-y="0.0" name="ElfHasProblem" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="26.633333333333333" y="8.666666666666668"/>
+      <place label-x="3.5" label-y="0.0" name="InRoom" x="26.0" y="13.0"/>
+      <place label-x="3.0" label-y="0.0" name="asking" x="26.0" y="23.0"/>
+      <place label-x="-3.0" label-y="0.0" name="replying" x="22.0" y="23.0"/>
+      <transition label-x="-3.0" label-y="0.0" name="explain" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="22.55" y="28.0"/>
+      <transition label-x="3.5" label-y="0.0" name="AskListen" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="26.55" y="28.0"/>
+      <place label-x="-3.0" label-y="0.0" name="doneExpl" x="22.0" y="32.0"/>
+      <place label-x="3.0" label-y="0.0" name="doneAsk" x="26.0" y="32.0"/>
+      <transition label-x="3.0" label-y="-0.5" name="synchE" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="26.85" y="36.0"/>
+      <place label-x="2.166666666666668" label-y="-2.395833333333334" marking="1" name="XmasApproaching" x="11.166666666666664" y="3.8125"/>
+      <transition delay="I[1.0]" label-x="3.166666666666665" label-y="1.3333333333333321" name="XmasEve" rotation="1.5707963267948966" text-size="SMALL" type="GEN" x="6.049999999999999" y="8.666666666666668"/>
+      <place label-x="3.833333333333332" label-y="0.25" marking="9" name="ToNorthPole" x="5.5" y="13.666666666666668"/>
+    </nodes>
+    <edges>
+      <arc head="arrived" kind="OUTPUT" tail="DeerArriving"/>
+      <arc head="DeerBarrier" kind="INPUT" mult="9" tail="arrived"/>
+      <arc head="DeerBarrier" kind="INPUT" mult-k="0.50693359375" tail="SantaSleeping">
+        <point x="7.5" y="30.333333333333336"/>
+      </arc>
+      <arc head="flying" kind="OUTPUT" mult="9" tail="DeerBarrier"/>
+      <arc head="delivering" kind="OUTPUT" tail="DeerBarrier"/>
+      <arc head="fly" kind="INPUT" tail="flying"/>
+      <arc head="deliver" kind="INPUT" tail="delivering"/>
+      <arc head="doneFly" kind="OUTPUT" tail="fly">
+        <point x="6.5" y="43.333333333333336"/>
+      </arc>
+      <arc head="doneDeliv" kind="OUTPUT" tail="deliver"/>
+      <arc head="synchD" kind="INPUT" mult="9" mult-y="0.0" tail="doneFly"/>
+      <arc head="synchD" kind="INPUT" tail="doneDeliv"/>
+      <arc head="SantaSleeping" kind="OUTPUT" tail="synchD">
+        <point x="11.0" y="49.333333333333336"/>
+        <point x="17.0" y="49.333333333333336"/>
+        <point x="16.0" y="25.833333333333336"/>
+      </arc>
+      <arc head="BackToPacific" kind="OUTPUT" mult="9" tail="synchD"/>
+      <arc head="back" kind="INPUT" tail="BackToPacific">
+        <point x="5.0" y="55.833333333333336"/>
+        <point x="2.0" y="55.333333333333336"/>
+      </arc>
+      <arc head="DeerTanning" kind="OUTPUT" tail="back">
+        <point x="1.5" y="19.833333333333336"/>
+        <point x="1.4999999999999998" y="17.91666666666667"/>
+        <point x="1.583333333333334" y="4.2500000000000036"/>
+      </arc>
+      <arc head="ElvesBarrier" kind="INPUT" tail="SantaSleeping">
+        <point x="25.5" y="18.5"/>
+      </arc>
+      <arc head="ElfHasProblem" kind="INPUT" tail="ElvesWorking"/>
+      <arc head="InRoom" kind="OUTPUT" tail="ElfHasProblem"/>
+      <arc head="ElvesBarrier" kind="INPUT" mult="3" tail="InRoom">
+        <point x="27.0" y="18.5"/>
+      </arc>
+      <arc head="asking" kind="OUTPUT" mult="3" tail="ElvesBarrier">
+        <point x="27.0" y="22.5"/>
+      </arc>
+      <arc head="replying" kind="OUTPUT" tail="ElvesBarrier"/>
+      <arc head="AskListen" kind="INPUT" tail="asking"/>
+      <arc head="explain" kind="INPUT" tail="replying"/>
+      <arc head="doneExpl" kind="OUTPUT" tail="explain"/>
+      <arc head="doneAsk" kind="OUTPUT" tail="AskListen"/>
+      <arc head="synchE" kind="INPUT" mult="3" tail="doneAsk"/>
+      <arc head="synchE" kind="INPUT" tail="doneExpl"/>
+      <arc head="ElvesWorking" kind="OUTPUT" mult="3" tail="synchE">
+        <point x="27.5" y="39.5"/>
+        <point x="33.5" y="41.5"/>
+        <point x="33.416666666666664" y="8.5"/>
+        <point x="33.333333333333336" y="6.166666666666667"/>
+        <point x="33.25" y="4.750000000000001"/>
+      </arc>
+      <arc head="SantaSleeping" kind="OUTPUT" tail="synchE">
+        <point x="23.0" y="38.0"/>
+        <point x="19.5" y="37.0"/>
+        <point x="18.0" y="35.5"/>
+        <point x="18.0" y="16.5"/>
+      </arc>
+      <arc head="XmasEve" kind="INPUT" mult="9" tail="DeerTanning"/>
+      <arc head="ToNorthPole" kind="OUTPUT" mult="9" tail="XmasEve"/>
+      <arc head="DeerArriving" kind="INPUT" tail="ToNorthPole"/>
+      <arc head="XmasEve" kind="INPUT" tail="XmasApproaching"/>
+      <arc head="XmasApproaching" kind="OUTPUT" tail="XmasEve">
+        <point x="12.5" y="10.333333333333334"/>
+        <point x="14.333333333333334" y="10.333333333333334"/>
+        <point x="14.666666666666666" y="9.916666666666668"/>
+        <point x="15.0" y="8.583333333333334"/>
+        <point x="15.0" y="8.500000000000002"/>
+        <point x="15.333333333333334" y="6.916666666666667"/>
+        <point x="15.25" y="6.166666666666668"/>
+      </arc>
+    </edges>
+  </gspn>
+  <measures gspn-name="PT" name="Measures" simplified-UI="false">
+    <assignments/>
+    <greatspn/>
+    <formulas>
+      <formula comment="Basic statistics of the toolchain execution." language="STAT"/>
+    </formulas>
+  </measures>
+</project>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Santa_Claus_v1" version="121">
+  <gspn name="PT" show-color-cmd="false" show-fluid-cmd="false" show-timed-cmd="false" view-rates="false">
+    <nodes>
+      <place label-x="4.0" label-y="0.0" marking="9" name="DeerTanning" x="6.0" y="3.0"/>
+      <transition label-x="4.0" label-y="0.0" name="DeerArriving" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="6.55" y="8.0"/>
+      <transition label-x="4.5" label-y="0.0" name="AllDeer" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="6.85" y="18.0"/>
+      <transition label-x="-4.0" label-y="0.0" name="ToyDelivery" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="10.55" y="28.0"/>
+      <place label-x="-3.0" label-y="0.0" name="arrived" x="6.0" y="13.0"/>
+      <place label-y="-2.0" marking="1" name="SantaSleeping" x="16.0" y="13.0"/>
+      <place label-x="3.5" label-y="0.0" name="delivering" x="10.0" y="23.0"/>
+      <place label-x="3.0" label-y="0.0" name="done_d" x="10.0" y="32.0"/>
+      <transition label-x="-2.5" label-y="-1.0" name="synch_d" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="6.85" y="36.0"/>
+      <place label-x="4.5" label-y="0.5" name="BackToPacific" x="6.0" y="40.0"/>
+      <transition label-x="2.5" label-y="0.0" name="back" nservers-x="0.5" rotation="1.5707963267948966" type="EXP" x="1.55" y="39.0"/>
+      <transition label-x="-4.5" label-y="0.0" name="3Elves" priority="2" priority-x="2.0" priority-y="0.0" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="26.85" y="18.0"/>
+      <place label-x="-4.0" label-y="0.0" marking="10" name="ElvesWorking" x="26.0" y="3.0"/>
+      <transition label-x="-4.0" label-y="0.0" name="ElvesArriving" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="26.55" y="8.0"/>
+      <place label-x="3.5" label-y="0.0" name="InRoom" x="26.0" y="13.0"/>
+      <place label-x="-3.0" label-y="0.0" name="replying" x="22.0" y="23.0"/>
+      <transition label-x="3.5" label-y="0.0" name="Discussion" nservers-x="0.5" rotation="1.5707963267948966" text-size="SMALL" type="EXP" x="22.55" y="28.0"/>
+      <place label-x="-3.0" label-y="0.0" name="done_e" x="22.0" y="32.0"/>
+      <transition label-x="3.0" label-y="-0.5" name="synch_e" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="26.85" y="36.0"/>
+    </nodes>
+    <edges>
+      <arc head="DeerArriving" kind="INPUT" tail="DeerTanning"/>
+      <arc head="arrived" kind="OUTPUT" tail="DeerArriving"/>
+      <arc head="AllDeer" kind="INPUT" mult="9" tail="arrived"/>
+      <arc head="AllDeer" kind="INPUT" mult-k="0.50693359375" tail="SantaSleeping">
+        <point x="8.0" y="18.5"/>
+      </arc>
+      <arc head="delivering" kind="OUTPUT" tail="AllDeer"/>
+      <arc head="ToyDelivery" kind="INPUT" tail="delivering"/>
+      <arc head="done_d" kind="OUTPUT" tail="ToyDelivery"/>
+      <arc head="synch_d" kind="INPUT" tail="done_d"/>
+      <arc head="SantaSleeping" kind="OUTPUT" tail="synch_d">
+        <point x="11.5" y="37.5"/>
+        <point x="17.5" y="37.5"/>
+        <point x="16.5" y="14.0"/>
+      </arc>
+      <arc head="BackToPacific" kind="OUTPUT" mult="9" tail="synch_d"/>
+      <arc head="back" kind="INPUT" tail="BackToPacific">
+        <point x="5.5" y="44.0"/>
+        <point x="2.5" y="43.5"/>
+      </arc>
+      <arc head="DeerTanning" kind="OUTPUT" tail="back">
+        <point x="2.0" y="8.0"/>
+        <point x="2.5" y="6.5"/>
+        <point x="5.5" y="5.0"/>
+      </arc>
+      <arc head="3Elves" kind="INPUT" tail="SantaSleeping">
+        <point x="25.5" y="18.5"/>
+      </arc>
+      <arc head="ElvesArriving" kind="INPUT" tail="ElvesWorking"/>
+      <arc head="InRoom" kind="OUTPUT" tail="ElvesArriving"/>
+      <arc head="3Elves" kind="INPUT" mult="3" tail="InRoom">
+        <point x="27.0" y="18.5"/>
+      </arc>
+      <arc head="replying" kind="OUTPUT" tail="3Elves"/>
+      <arc head="Discussion" kind="INPUT" tail="replying"/>
+      <arc head="done_e" kind="OUTPUT" tail="Discussion"/>
+      <arc head="synch_e" kind="INPUT" tail="done_e"/>
+      <arc head="ElvesWorking" kind="OUTPUT" mult="3" tail="synch_e">
+        <point x="27.5" y="39.5"/>
+        <point x="33.5" y="41.5"/>
+        <point x="33.0" y="8.5"/>
+        <point x="31.5" y="6.5"/>
+        <point x="31.5" y="6.0"/>
+      </arc>
+      <arc head="SantaSleeping" kind="OUTPUT" tail="synch_e">
+        <point x="23.0" y="38.0"/>
+        <point x="19.5" y="37.0"/>
+        <point x="18.0" y="35.5"/>
+        <point x="18.0" y="16.5"/>
+      </arc>
+    </edges>
+  </gspn>
+  <measures gspn-name="PT" name="Measures" simplified-UI="false">
+    <assignments/>
+    <greatspn/>
+    <formulas>
+      <formula comment="Basic statistics of the toolchain execution." language="STAT"/>
+    </formulas>
+  </measures>
+</project>

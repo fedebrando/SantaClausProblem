@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This project file has been saved by the New GreatSPN Editor, v.100 --><project name="Santa_Claus_v1" version="121">
+  <gspn name="PT" show-color-cmd="false" show-fluid-cmd="false" show-timed-cmd="false" view-rates="false">
+    <nodes>
+      <transition label-x="4.5" label-y="0.0" name="StartBarrier" rotation="1.5707963267948966" text-size="SMALL" type="IMM" x="13.85" y="13.0"/>
+      <place label-x="-0.5" label-y="-2.0" name="AllDeerArrived" text-size="SMALL" x="7.0" y="8.0"/>
+      <place label-y="-2.0" name="SantaSleeping" text-size="SMALL" x="13.0" y="8.0"/>
+      <place label-x="4.0" label-y="0.0" marking="1" name="Delivering" text-size="SMALL" x="13.0" y="17.0"/>
+      <transition delay="0.01" label-x="4.0" label-y="0.0" name="JointDelivery" nservers-x="0.5" rotation="4.71238898038469" text-size="SMALL" type="EXP" x="13.55" y="22.0"/>
+      <place label-x="3.5" label-y="0.0" name="Delivered" text-size="SMALL" x="13.0" y="26.0"/>
+      <transition label-x="4.0" label-y="0.0" name="DoneBarrier" rotation="4.71238898038469" text-size="SMALL" type="IMM" x="13.85" y="29.0"/>
+    </nodes>
+    <edges>
+      <arc head="StartBarrier" kind="INPUT" mult="9" mult-x="1.5" mult-y="0.0" tail="AllDeerArrived"/>
+      <arc head="StartBarrier" kind="INPUT" mult-k="0.50693359375" tail="SantaSleeping"/>
+      <arc head="Delivering" kind="OUTPUT" tail="StartBarrier"/>
+      <arc head="Delivered" kind="OUTPUT" tail="JointDelivery"/>
+      <arc head="DoneBarrier" kind="INPUT" tail="Delivered"/>
+      <arc head="SantaSleeping" kind="OUTPUT" tail="DoneBarrier">
+        <point x="15.0" y="32.5"/>
+        <point x="15.5" y="32.5"/>
+        <point x="20.0" y="32.5"/>
+        <point x="22.0" y="28.5"/>
+        <point x="22.0" y="28.0"/>
+        <point x="22.5" y="17.5"/>
+        <point x="22.5" y="17.0"/>
+        <point x="21.0" y="8.5"/>
+        <point x="20.0" y="6.5"/>
+      </arc>
+      <arc head="JointDelivery" kind="INPUT" tail="Delivering"/>
+      <arc head="AllDeerArrived" kind="OUTPUT" mult="9" tail="DoneBarrier">
+        <point x="11.0" y="32.5"/>
+        <point x="6.0" y="31.5"/>
+        <point x="5.5" y="31.0"/>
+        <point x="4.0" y="16.5"/>
+        <point x="4.0" y="15.0"/>
+        <point x="6.0" y="9.0"/>
+        <point x="6.5" y="8.5"/>
+      </arc>
+    </edges>
+  </gspn>
+  <measures gspn-name="PT" name="Measures" simplified-UI="false">
+    <assignments/>
+    <greatspn epsilon="1.0e-9" mode="EGSPN"/>
+    <formulas>
+      <formula comment="Basic statistics of the toolchain execution." language="STAT"/>
+      <formula language="ALL"/>
+    </formulas>
+  </measures>
+</project>
