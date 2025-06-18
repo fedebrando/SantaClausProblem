@@ -3,14 +3,16 @@
 Let us indicate the project root directory with `/`.
 
 ## Petri net models
-The folder `/Petri_net_models` includes the Petri net models (actually, GSPN and DTPN models) reported in the paper <i>Exposing the Concurrency of the Santa Claus Problem</i>, submitted for publication by F. Brandini, A. Mazzocchi and S. Caselli.
+The folder `/Petri_net_models` includes the Petri net models (actually, GSPN and DTPN models) reported in the paper <i>Exposing the Concurrency of the Santa Claus Problem</i>, submitted for publication by [F. Brandini](https://github.com/fedebrando), [A. Mazzocchi](https://github.com/mattoszky) and [S. Caselli](https://github.com/SCaselli).
 
-All models in format .PNPRO can be open and analyzed with the tool GreatSPN3.1, available at [this repo](https://github.com/greatspn/SOURCES).
+All models in format .PNPRO can be open and analyzed with the tool GreatSPN3.1, available [here](https://github.com/greatspn/SOURCES).
 
 Last compatibility check: July 6, 2025
 
 ## Timed activities
-All timed activities occurring in the Santa Claus Problem  are implemented as random durations with values drawn from negative exponential distributions. The samples come from the <i>exp_dis(avg)</i> function described at `/src/lib/utilities.hpp`; this function samples a negative exponential distribution with average <i>avg</i> and returns the sampled value.
+All timed activities occurring in the Santa Claus Problem  are implemented as random durations with values drawn from negative exponential distributions. The samples come from the **<i>exp_dis(avg)</i>** function described at `/src/lib/utilities.hpp`; this function samples a negative exponential distribution with average <i>avg</i> and returns the sampled value.
+
+In the code, this function is never called directly, but through the **<i>log(str, avg)</i>** function. It represents an activity executed by an entity (e.g., an elf): it prints the string <i>str</i> on the console and waits for <i>exp_dis(avg)</i>. For more details, consult `/src/lib/utilities.hpp`.
 
 ## Run
 First, navigate to the project root directory and compile the project by running the following command:
@@ -23,7 +25,7 @@ Once compiled, you can select which version to run from the `/build/bin` directo
 
 ### v1
 
-In this version, Santa Claus and the reindeer deliver toys together as a single entity, modeled using a Petri net. To run the program from the `/build/bin` directory, use the following command:
+In this version, **Santa Claus and the reindeer deliver toys together** as a single entity, modeled using a Petri net. To run the program from the `/build/bin` directory, use the following command:
 
 ```shell
 ./main1
@@ -38,7 +40,7 @@ For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/sr
 
 ### v2
 
-In this version, Santa Claus and the reindeer deliver toys independently, with downstream synchronization. As with the previous version, you can run the program from the `/build/bin` directory using the following command:
+In this version, **Santa Claus and the reindeer deliver toys independently**, with downstream synchronization. As with the previous version, you can run the program from the `/build/bin` directory using the following command:
 
 ```shell
 ./main2
@@ -50,7 +52,7 @@ For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/sr
 
 ### v3
 
-This version generalizes version 1 by allowing an arbitrary number of Santa Claus entities. You can specify the number of elves, reindeer, and Santa Claus instances as command-line parameters. Run the following command from the `/build/bin` directory:
+This version **generalizes version 1 by allowing an arbitrary number of Santa Claus entities**. You can specify the number of elves, reindeer, and Santa Claus instances as command-line parameters. Run the following command from the `/build/bin` directory:
 
 ```shell
 ./main3 n_reindeer n_elves n_santa
@@ -65,4 +67,4 @@ For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/sr
 
 ### Statistics and documentation
 The complete statistics are reported in `/stats/stats.xlsx`, where you can also find the documentation about the system used to test the solutions in `Info` section.
-You can find the documentation related to the C++ <i>high_resolution_clock</i> function at [this link](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock).
+The documentation related to the C++ <i>high_resolution_clock()</i> function, which is used for all time measurments in the code, is available [here](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock).
