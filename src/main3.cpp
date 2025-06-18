@@ -6,7 +6,7 @@
 #include "utilities.hpp"
 #include "santa_v3.hpp"
 
-//#define MONO_CORE // Run the application on a single core
+//#define SINGLE_CORE // Run the application on a single core
 
 #define MIN_ELVES 3 // Number of elves in a consulting group
 
@@ -33,7 +33,7 @@ bool is_christmas(false);
 
 int main(int argc, char** argv)
 {
-#ifdef MONO_CORE
+#ifdef SINGLE_CORE
     set_affinity_to_core0(pthread_self());
 #endif
     int n_reindeer, n_elves, n_santa;
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
     for (int i = 0; i < n_santa; i++)
     {
         thread th(santa, ref(sc), i);
-#ifdef MONO_CORE
+#ifdef SINGLE_CORE
         set_affinity_to_core0(th.native_handle());
 #endif
         th_santa.push_back(move(th));
@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     for (int i = 0; i < n_elves; i++)
     {
         thread th(elf, ref(sc), i);
-#ifdef MONO_CORE
+#ifdef SINGLE_CORE
         set_affinity_to_core0(th.native_handle());
 #endif
         th_elves.push_back(move(th));
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
     for (int i = 0; i < n_reindeer; i++)
     {
         thread th(reindeer, ref(sc), i);
-#ifdef MONO_CORE
+#ifdef SINGLE_CORE
         set_affinity_to_core0(th.native_handle());
 #endif
         th_reindeer.push_back(move(th));
@@ -78,7 +78,7 @@ int main(int argc, char** argv)
 
     // Christmas signal thread
     thread th_signal(christmas_signal);
-#ifdef MONO_CORE
+#ifdef SINGLE_CORE
     set_affinity_to_core0(th_signal.native_handle());
 #endif
     

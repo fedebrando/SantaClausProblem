@@ -34,6 +34,8 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify
 - To display **delivery delays** (<i>ms</i>), uncomment the `#define V1_DELIVERY_DELAY_VERBOSE` directive in `/src/main1.cpp`.
 - To display **Santa's state** when all reindeer arrive, uncomment the `#define V1_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v1/santa_v1.hpp`.
 
+For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main1.cpp`.
+
 ### v2
 
 In this version, Santa Claus and the reindeer deliver toys independently, with downstream synchronization. As with the previous version, you can run the program from the `/build/bin` directory using the following command:
@@ -43,6 +45,8 @@ In this version, Santa Claus and the reindeer deliver toys independently, with d
 ```
 
 The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify the number of elves and reindeer by adjusting the corresponding macro constants in `/src/main2.cpp` and recompiling the project. If you want to display **delivery times** (<i>ms</i>), uncomment the `#define V2_DELIVERY_TIME_VERBOSE` directive in the same file.
+
+For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main2.cpp`.
 
 ### v3
 
@@ -56,6 +60,8 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also d
 - To display **delivery delays** (<i>ms</i>), uncomment the `#define V3_DELIVERY_DELAY_VERBOSE` directive in `/src/monitor/v3/santa_v3.hpp`.
 - To display **Santa's state** when all reindeer arrive, uncomment the `#define V3_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v3/santa_v3.hpp`.
 - To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `/src/monitor/v3/santa_v3.hpp`.
+
+For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main3.cpp`.
 
 ### Statistics and documentation
 The complete statistics are reported in `/stats/stats.xlsx`, where you can also find the documentation about the system used to test the solutions in `Info` section.
