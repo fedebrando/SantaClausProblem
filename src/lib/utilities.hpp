@@ -6,6 +6,8 @@
 #include <sstream>
 #include <unistd.h>
 #include <random>
+#include <pthread.h>
+#include <sched.h>
 
 #define VERBOSE true
 
@@ -31,5 +33,15 @@ double exp_dis(double avg);
  * @warning If the received average is 0, this function prints a log but doesn't sleep
  */
 void log(string s, unsigned int avg_ms = 0);
+
+/**
+ * @brief Constraints the execution of a thread on a single core
+ * 
+ * This procedure constraints the execution of the thread with the
+ * received native handle on the core with index 0
+ * 
+ * @param nh The native handle of the thread to bind
+ */
+void set_affinity_to_core0(pthread_t nh);
 
 #endif

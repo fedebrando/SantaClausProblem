@@ -22,3 +22,14 @@ void log(string s, unsigned int avg_ms)
     if (avg_ms)
         usleep(exp_dis(avg_ms)*1000);
 }
+
+void set_affinity_to_core0(pthread_t nh)
+{
+    cpu_set_t cpuset;
+
+    CPU_ZERO(&cpuset);
+    CPU_SET(0, &cpuset);
+
+    if (pthread_setaffinity_np(nh, sizeof(cpu_set_t), &cpuset))
+        std::cerr << "Error on affinity setting";
+}
