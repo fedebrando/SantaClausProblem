@@ -12,7 +12,7 @@ Last compatibility check: July 6, 2025
 ## Timed activities
 All timed activities occurring in the Santa Claus Problem  are implemented as random durations with values drawn from negative exponential distributions. The samples come from the **<i>exp_dis(avg)</i>** function described at `/src/lib/utilities.hpp`; this function samples a negative exponential distribution with average <i>avg</i> and returns the sampled value.
 
-In the code, this function is never called directly, but through the **<i>log(str, avg)</i>** function. It represents an activity executed by an entity (e.g., an elf): it prints the string <i>str</i> on the console and waits for <i>exp_dis(avg)</i>. For more details, consult `/src/lib/utilities.hpp`.
+In the code, this function is never called directly, but through the **<i>log(str, avg)</i>** function. It represents an activity executed by an entity (e.g., an elf): it prints the string <i>str</i> on the console and waits for <i>exp_dis(avg)</i>. For more details, consult `/src/lib/utilities.hpp`. **To disable log prints** go to the same file and set to `false` the value of the constant `VERBOSE` (this setting does not act on stochastic times).
 
 ## Run
 First, navigate to the project root directory and compile the project by running the following command:
@@ -31,10 +31,10 @@ In this version, **Santa Claus and the reindeer deliver toys together** as a sin
 ./main1
 ```
 
-The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify the number of elves and reindeer by adjusting the corresponding macro constants in `/src/main1.cpp` and recompiling the project. You can also display some additional information as indicated below:
-- To display **delivery times** (<i>ms</i>), uncomment the `#define V1_DELIVERY_TIME_VERBOSE` directive in `/src/main1.cpp`.
-- To display **delivery delays** (<i>ms</i>), uncomment the `#define V1_DELIVERY_DELAY_VERBOSE` directive in `/src/main1.cpp`.
-- To display **Santa's state** when all reindeer arrive, uncomment the `#define V1_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v1/santa_v1.hpp`.
+The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify the number of elves and reindeer by adjusting the corresponding macro constants in `/src/main1.cpp` and recompiling the project. You can also display some additional information as indicated below.
+- To display **delivery times** (<i>ms</i>), uncomment the `#define V1_DELIVERY_TIME_VERBOSE` directive in `/src/main1.cpp`
+- To display **delivery delays** (<i>ms</i>), uncomment the `#define V1_DELIVERY_DELAY_VERBOSE` directive in `/src/main1.cpp`
+- To display **Santa's state** when all reindeer arrive, uncomment the `#define V1_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v1/santa_v1.hpp`
 
 For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main1.cpp`.
 
@@ -58,10 +58,10 @@ This version **generalizes version 1 by allowing an arbitrary number of Santa Cl
 ./main3 n_reindeer n_elves n_santa
 ```
 
-The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also display some additional information as indicated below:
-- To display **delivery delays** (<i>ms</i>), uncomment the `#define V3_DELIVERY_DELAY_VERBOSE` directive in `/src/monitor/v3/santa_v3.hpp`.
-- To display **Santa's state** when all reindeer arrive, uncomment the `#define V3_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v3/santa_v3.hpp`.
-- To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `/src/monitor/v3/santa_v3.hpp`.
+The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also display some additional information as indicated below.
+- To display **delivery delays** (<i>ms</i>), uncomment the `#define V3_DELIVERY_DELAY_VERBOSE` directive in `/src/monitor/v3/santa_v3.hpp`
+- To display **Santa's state** when all reindeer arrive, uncomment the `#define V3_SANTA_STATE_FOR_DELIVERY` directive in `/src/monitor/v3/santa_v3.hpp`
+- To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `/src/monitor/v3/santa_v3.hpp`
 
 For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main3.cpp`.
 
