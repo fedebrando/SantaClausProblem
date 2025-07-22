@@ -114,7 +114,7 @@ void reindeer(SantaClaus& sc, int id)
 {
     while (true)
     {
-        log("Reindeer " + to_string(id) + ": on vacation");
+        log("🦌 Reindeer " + to_string(id) + ": on vacation");
 
         {
             unique_lock<mutex> lock(mtx);
@@ -128,13 +128,13 @@ void reindeer(SantaClaus& sc, int id)
                 wait_christmas.notify_one();
         }
 
-        log("Reindeer " + to_string(id) + ": head back to the North Pole", 100);
-        log("Reindeer " + to_string(id) + ": ready to deliver");
+        log("🦌 Reindeer " + to_string(id) + ": head back to the North Pole", 100);
+        log("🦌 Reindeer " + to_string(id) + ": ready to deliver");
 #ifdef V1_DELIVERY_DELAY_VERBOSE
         _ex_start_stop_multi(START, N_REINDEER, 1);
 #endif
         sc.new_service(DELIVERY);
-        log("Reindeer " + to_string(id) + ": head back to the Pacific Islands", 100);
+        log("🦌 Reindeer " + to_string(id) + ": head back to the Pacific Islands", 100);
     }
 }
 
@@ -142,8 +142,8 @@ void elf(SantaClaus& sc, int id)
 {
     while (true)
     {
-        log("Elf " + to_string(id) + ": making new toys", 400);
-        log("Elf " + to_string(id) + ": ready to talk");
+        log("🧝 Elf " + to_string(id) + ": making new toys", 400);
+        log("🧝 Elf " + to_string(id) + ": ready to talk");
         sc.new_service(CONSULT);
     }
 }
@@ -154,7 +154,7 @@ void santa(SantaClaus& sc)
 
     while (true)
     {
-        log("Santa: waiting for reindeer/elves");
+        log("🎅 Santa: waiting for reindeer/elves");
         sc.start_service(s);
         if (s == DELIVERY)
         {
@@ -164,14 +164,14 @@ void santa(SantaClaus& sc)
 #ifdef V1_DELIVERY_DELAY_VERBOSE
             _ex_start_stop_multi(STOP, N_REINDEER, 1);
 #endif
-            log("Santa: delivering toys", 100);
+            log("🎅 Santa: delivering toys", 100);
 #ifdef V1_DELIVERY_TIME_VERBOSE
             _start_stop();
 #endif
         }
         else
-            log("Santa: answer all questions in session", 10);
+            log("🎅 Santa: answer all questions in session", 10);
         sc.end_service();
-        log("Santa: end of service");
+        log("🎅 Santa: end of service");
     }
 }

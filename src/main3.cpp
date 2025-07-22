@@ -122,7 +122,7 @@ void reindeer(SantaClaus& sc, int id)
 
     while (true)
     {
-        log("Reindeer " + to_string(id) + ": on vacation");
+        log("🦌 Reindeer " + to_string(id) + ": on vacation");
 
         {
             unique_lock<mutex> lock(mtx);
@@ -136,10 +136,10 @@ void reindeer(SantaClaus& sc, int id)
                 wait_christmas.notify_one();
         }
 
-        log("Reindeer " + to_string(id) + ": head back to the North Pole", 100);
-        log("Reindeer " + to_string(id) + ": ready to deliver");
+        log("🦌 Reindeer " + to_string(id) + ": head back to the North Pole", 100);
+        log("🦌 Reindeer " + to_string(id) + ": ready to deliver");
         sc.new_service(DELIVERY, id_santa);
-        log("Reindeer " + to_string(id) + ": head back to the Pacific Islands (toys delivery with Santa " + to_string(id_santa) + " finished)", 100);
+        log("🦌 Reindeer " + to_string(id) + ": head back to the Pacific Islands (toys delivery with Santa " + to_string(id_santa) + " finished)", 100);
     }
 }
 
@@ -149,10 +149,10 @@ void elf(SantaClaus& sc, int id)
 
     while (true)
     {
-        log("Elf " + to_string(id) + ": making new toys", 400);
-        log("Elf " + to_string(id) + ": ready to talk");
+        log("🧝 Elf " + to_string(id) + ": making new toys", 400);
+        log("🧝 Elf " + to_string(id) + ": ready to talk");
         sc.new_service(CONSULT, id_santa);
-        log("Elf " + to_string(id) + ": go back to work (talking with Santa " + to_string(id_santa) + " finished)");
+        log("🧝 Elf " + to_string(id) + ": go back to work (talking with Santa " + to_string(id_santa) + " finished)");
     }
 }
 
@@ -162,14 +162,14 @@ void santa(SantaClaus& sc, int id)
 
     while (true)
     {
-        log("Santa " + to_string(id) + ": waiting for reindeer/elves");
+        log("🎅 Santa " + to_string(id) + ": waiting for reindeer/elves");
         sc.start_service(s, id);
         if (s == DELIVERY)
-            log("Santa " + to_string(id) + ": delivering toys", 100);
+            log("🎅 Santa " + to_string(id) + ": delivering toys", 100);
         else
-            log("Santa " + to_string(id) + ": answer all questions in session", 10);
+            log("🎅 Santa " + to_string(id) + ": answer all questions in session", 10);
         sc.end_service(id);
-        log("Santa " + to_string(id) + ": end of service");
+        log("🎅 Santa " + to_string(id) + ": end of service");
     }
 }
 
