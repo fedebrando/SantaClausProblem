@@ -33,9 +33,13 @@ class SantaClaus
         vector<unsigned int> TOT;
         unsigned int MIN_ELVES;
 
+        // For Santa Claus
+
         cnt_condition_variable await_someone;
         cnt_condition_variable wait_all_passed;
         cnt_condition_variable wait_greetings;
+
+        // For clients
 
         vector<cnt_condition_variable> wait_service;
         vector<unsigned int> turnstile;

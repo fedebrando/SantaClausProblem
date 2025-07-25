@@ -65,6 +65,11 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also d
 
 For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main3.cpp`.
 
-### Statistics and documentation
+## Condition variables
+In all three versions, Santa Claus waits for a service request on the condition variable `await_someone`. Once he is woken by a group of clients (elves or reindeers), he waits for the elves to be accommodated or the reindeers to be harnessed to the shuttle on `wait_all_passed`, and then proceeds to execute the service (consultation or toy delivery). Once the service is completed, Santa waits for greetings from the clients on the condition variable `wait_greetings`. In the **third version**, each Santa Claus will have these three condition variables, while, in the **second version**, during the execution of the service, Santa has to wait for the clients to finish their operations on `wait_clients_finish` before proceeding to greetings.
+
+From the client’s perspective, after sending a service request to Santa Claus, an elf or a reindeer waits for the service to begin on its condition variable `wait_service`. Waiting for the end of the service takes place on `wait_end_of_service`.
+
+## Statistics and documentation
 The complete statistics are reported in `/stats/stats.xlsx`, where you can also find the documentation about the system used to test the solutions in `Info` section.
 The documentation related to the C++ <i>high_resolution_clock()</i> function, which is used for all time measurments in the code, is available [here](https://en.cppreference.com/w/cpp/chrono/high_resolution_clock).
