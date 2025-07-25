@@ -11,9 +11,13 @@ class SantaClausV1 = Monitor
     int TOT[_TOT_SERVICES];
     int MIN_ELVES;
 
+    // For Santa Claus
+
     condition_variable await_someone;
     condition_variable wait_all_passed;
     condition_variable wait_greetings;
+
+    // For clients
 
     condition_variable wait_service[_TOT_SERVICES];
     int turnstile[_TOT_SERVICES];

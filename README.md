@@ -38,6 +38,8 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify
 
 For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main1.cpp`.
 
+To view the pseudocode for this monitor version, see the file `/pseudo/pseudo1.md`.
+
 ### v2
 
 In this version, **Santa Claus and the reindeer deliver toys independently**, with downstream synchronization. As with the previous version, you can run the program from the `/build/bin` directory using the following command:
@@ -49,6 +51,8 @@ In this version, **Santa Claus and the reindeer deliver toys independently**, wi
 The program runs indefinitely, but you can stop it with `Ctrl+C`. You can modify the number of elves and reindeer by adjusting the corresponding macro constants in `/src/main2.cpp` and recompiling the project. If you want to display **delivery times** (<i>ms</i>), uncomment the `#define V2_DELIVERY_TIME_VERBOSE` directive in the same file.
 
 For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main2.cpp`.
+
+To view the pseudocode for this monitor version, see the file `/pseudo/pseudo2.md`.
 
 ### v3
 
@@ -64,6 +68,8 @@ The program runs indefinitely, but you can stop it with `Ctrl+C`. You can also d
 - To display **elves' waiting times** (<i>ms</i>), uncomment `#define V3_ELVES_WAIT_TIME_VERBOSE` in `/src/monitor/v3/santa_v3.hpp`
 
 For a **single-core run**, uncomment the `#define SINGLE_CORE` directive in `/src/main3.cpp`.
+
+To view the pseudocode for this monitor version, see the file `/pseudo/pseudo3.md`.
 
 ## Condition variables
 In all three versions, Santa Claus waits for a service request on the condition variable `await_someone`. Once he is woken by a group of clients (elves or reindeers), he waits for the elves to be accommodated or the reindeers to be harnessed to the shuttle on `wait_all_passed`, and then proceeds to execute the service (consultation or toy delivery). Once the service is completed, Santa waits for greetings from the clients on the condition variable `wait_greetings`. In the **third version**, each Santa Claus will have these three condition variables, while, in the **second version**, during the execution of the service, Santa has to wait for the clients to finish their operations on `wait_clients_finish` before proceeding to greetings.
